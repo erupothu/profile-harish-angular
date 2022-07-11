@@ -1,0 +1,46 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="80">
+		<mat-toolbar-row style="background-color: antiquewhite;">
+			<div class="inbox-toolbar">
+				<mat-checkbox [(ngModel)]="checkbox">
+					</mat-checkbox>
+					<a mat-button matTooltip="delete">
+						<mat-icon> delete_outline </mat-icon>
+					</a>
+					<a mat-button matTooltip="mail">
+						<mat-icon> mail_outline </mat-icon>
+					</a>
+					<a mat-button matTooltip="folder">
+						<mat-icon> folder_open </mat-icon>
+					</a>
+					<a mat-button matTooltip="label">
+						<mat-icon> label_outline </mat-icon>
+					</a>
+					<input placeholder="search" autocomplete="false"
+						style="outline-style: none; padding: 0.5vw; width: 30vw;border: 1px solid blue; font-size: 16px;">
+			</div>
+		</mat-toolbar-row>
+	</div>
+	<div fxFlex="80">
+		<div *ngFor="let item of [1,2,3,4]">
+			<mat-card appMaterialElevation>
+				<mat-card-content>
+					<div class="online">
+						<mat-checkbox [(ngModel)]="checkbox"></mat-checkbox>
+					</div>
+					<div class="online">
+						<input class="star" type="checkbox" title="bookmark" style="margin-bottom: 45px; margin-right: 30px;">
+					</div>
+					<div class="online">
+						<div mat-card-avatar class="example-header-image"></div>
+					</div>
+					<div class="online" [routerLink]="['/email/mail']" routerLinkActive="router-link-active">
+						<mat-card-title style="color: #727E8C">Card Title</mat-card-title>
+						<mat-card-subtitle style="color: #727E8C">This card changes elevation when you hover over it!
+						</mat-card-subtitle>
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<button mat-flat-button color="primary" style="margin-right: 50px; width: 200px" [routerLink]="['/email/compose-mail']" routerLinkActive="router-link-active" >
+		Compose
+	</button>
+	<button mat-flat-button (click)="email_sidenav.toggle()" >
+		<mat-icon>menu</mat-icon>
+	</button>
+	<app-email-chat style="float:right"></app-email-chat>
+<mat-sidenav-container style="height:90vh">
+	<mat-sidenav mode="side" #email_sidenav role="navigation" opened style="width: 10vw;">
+		<mat-nav-list>
+			<mat-list-item [routerLink]="['/email/inbox']" routerLinkActive="router-link-active"> Inbox </mat-list-item>
+			<mat-list-item [routerLink]="['/email/sent-mails']" routerLinkActive="router-link-active" > Sent </mat-list-item>
+			<mat-list-item [routerLink]="['/email/draft-mails']" routerLinkActive="router-link-active" >  Draft </mat-list-item>
+			<mat-list-item [routerLink]="['/email/stared-mails']" routerLinkActive="router-link-active" > Starred </mat-list-item>
+			<mat-list-item [routerLink]="['/email/spam-mails']" routerLinkActive="router-link-active" > Spam </mat-list-item>
+			<mat-list-item [routerLink]="['/email/trash-mails']" routerLinkActive="router-link-active" > Trash </mat-list-item>
+			<h5>LABELS</h5>
+			<mat-list-item> Product </mat-list-item>
+			<mat-list-item> Work </mat-list-item>
+			<mat-list-item> Misc </mat-list-item>
+			<mat-list-item> Family </mat-list-item>
+			<mat-list-item> Design </mat-list-item>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>

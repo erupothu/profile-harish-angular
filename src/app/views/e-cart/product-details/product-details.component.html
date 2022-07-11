@@ -1,0 +1,79 @@
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="100" style="background-color: darkcyan;">
+		<div style="padding: 5%; padding-top: 1%">
+			<span style="font-size: 50px;"> Products</span>
+			<span style="text-align: center; font-size: 30px; margin-left: 20%; border: 2px solid #3d7771">
+				<mat-icon>search</mat-icon>
+				<mat-form-field style="width: 40%">
+					<input matInput placeholder="search">
+				</mat-form-field>
+			</span>
+		</div>
+	</div>
+	<div fxFlex="80">
+		<mat-tab-group>
+			<mat-tab label="Basic Info">
+				<div>
+					<mat-card>
+						<mat-card-content>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="name" [(ngModel)]="productData.name">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="description" [(ngModel)]="productData.description">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="category" [(ngModel)]="productData.category">
+								</mat-form-field>
+							</div>
+						</mat-card-content>
+					</mat-card>
+				</div>
+			</mat-tab>
+			<mat-tab label="Product Images">
+				<div>
+					<input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" style="display: none"/>
+					<mat-card>
+						<button mat-icon-button (click)="fileInput.click()">
+							<mat-icon class="image-icon-size">cloud_upload</mat-icon>
+						</button>
+					</mat-card>
+				</div>
+				<div>
+					<mat-card>
+						<div mat-card-avatar [style.backgroundImage]="'url('+ imageUrl +')'" class="adjust-image"></div>
+					</mat-card>
+				</div>
+			</mat-tab>
+			<mat-tab label="pricing">
+				<div>
+					<mat-card>
+						<mat-card-content>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="price" [(ngModel)]="productData.price">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="left items" [(ngModel)]="productData.quantity_left">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="total items" [(ngModel)]="productData.total_quantity">
+								</mat-form-field>
+							</div>
+						</mat-card-content>
+					</mat-card>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

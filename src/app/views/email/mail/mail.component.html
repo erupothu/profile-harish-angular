@@ -1,0 +1,56 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="80">
+		<mat-toolbar-row>
+			<button mat-flat-button style="margin-right: 50px; width: 50px" [routerLink]="['/email/inbox']"
+				routerLinkActive="router-link-active">
+				<mat-icon> keyboard_arrow_left </mat-icon>
+			</button>
+			Advertising online
+		</mat-toolbar-row>
+	</div>
+	<div fxFlex="80">
+		<mat-card>
+			<mat-card-title> VIEW MAILS</mat-card-title>
+		</mat-card>
+	</div>
+	<div fxFlex="80">
+		<mat-accordion>
+			<div *ngFor="let item of [1,2,3,4]">
+
+				<mat-expansion-panel style="margin:2vh;">
+					<mat-expansion-panel-header [collapsedHeight]="'10vh'" [expandedHeight]="'10vh'">
+						<mat-card-header>
+							<div>
+								<div mat-card-avatar class="example-header-image"></div>
+							</div>
+							<div style="margin: 0 1vw;">
+								<mat-card-title style="color: #727E8C">Card Title</mat-card-title>
+								<mat-card-subtitle style="color: #727E8C">This card changes elevation when you hover
+									over it!</mat-card-subtitle>
+							</div>
+						</mat-card-header>
+					</mat-expansion-panel-header>
+					<mat-divider></mat-divider>
+					<div style="padding: 1vw;">
+						<strong>Greetings!</strong>
+						<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+							has been the industry's standard dummy text ever since the 1500s,
+							when an unknown printer took a galley of type and scrambled it to make a type specimen
+							book.</p>
+						<p> It has survived not only five centuries, but also the leap into electronic typesetting,
+							remaining essentially unchanged.</p>
+						<span>Sincerely yours,</span> <br>
+						<strong>Envato Design Team</strong>
+					</div>
+					<mat-divider></mat-divider>
+					<div style="padding: 1vw;">
+						<h3> Attached Files</h3>
+						<button mat-flat-button> image1.jpeg</button> <br>
+						<button mat-flat-button> image2.jpeg</button>
+					</div>
+				</mat-expansion-panel>
+
+			</div>
+		</mat-accordion>
+	</div>
+</div>

@@ -1,0 +1,144 @@
+<div fxlayout="row wrap" fxLayoutAlign="center">
+	<div fxFlex="80">
+		<mat-tab-group>
+			<mat-tab label="custom editor">
+				<div>
+					<div style="position: absolute; left: 20px; bottom: 50%;">
+						<fab-speed-dial direction="right">
+							<button type="button" mat-fab fab-toggle><i class="material-icons">add</i></button>
+							<button type="button" mat-fab fab-button><i class="material-icons">music_note</i></button>
+							<button type="button" mat-fab fab-button [matMenuTriggerFor]="insertingVideo"><i
+									class="material-icons">play_circle_filled</i></button>
+							<button type="button" mat-fab fab-button (click)="fileInput.click()"><i
+									class="material-icons">insert_photo</i></button>
+						</fab-speed-dial>
+						<input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+							(change)="uploadFile($event)" hidden="true" />
+						<mat-menu #insertingVideo="matMenu">
+							<input placeholder="http://url" [(ngModel)]="videoUrl" (click)="$event.stopPropagation();">
+							<a mat-raised-button (click)="insertVideo()">
+								Add
+							</a>
+						</mat-menu>
+					</div>
+					<div *ngIf="showEditorMenu">
+						<div class="editor-menu"
+							[ngStyle]="{'top.px': editorMenuTop, 'left.px': editorMenuLeft, 'opacity': '1'}">
+							<a mat-raised-button (click)="ibold()">
+								<mat-icon>format_bold</mat-icon>
+							</a>
+							<a mat-raised-button (click)="iItalic()">
+								<mat-icon>format_italic</mat-icon>
+							</a>
+							<a mat-raised-button (click)="iUnderline()">
+								<mat-icon>format_underlined</mat-icon>
+							</a>
+							<a mat-raised-button (click)="iUnderline()">
+								<mat-icon>attach_file</mat-icon>
+							</a>
+							<!-- <a mat-raised-button (click)="enableInlineTableEditing()">
+								<mat-icon>border_all</mat-icon>
+							</a> -->
+							<a mat-raised-button [matMenuTriggerFor]="alignment">
+								<mat-icon>format_align_center</mat-icon>
+							</a>
+							<mat-menu #alignment="matMenu">
+								<a mat-raised-button (click)="justifyCenter()">
+									<mat-icon>format_align_center</mat-icon>
+								</a>
+								<a mat-raised-button (click)="justifyFull()">
+									<mat-icon>format_align_justify</mat-icon>
+								</a>
+								<a mat-raised-button (click)="justifyLeft()">
+									<mat-icon>format_align_left</mat-icon>
+								</a>
+								<a mat-raised-button (click)="justifyRight()">
+									<mat-icon>format_align_right</mat-icon>
+								</a>
+							</mat-menu>
+
+							<a mat-raised-button (click)="outdent()">
+								<mat-icon>format_indent_decrease</mat-icon>
+							</a>
+							<a mat-raised-button (click)="indent()">
+								<mat-icon>format_indent_increase</mat-icon>
+							</a>
+							<a mat-raised-button (click)="insertUnorderedList()">
+								<mat-icon>format_list_bulleted</mat-icon>
+							</a>
+							<a mat-raised-button (click)="insertOrderedList()">
+								<mat-icon>format_list_numbered</mat-icon>
+							</a>
+							<!-- <a mat-raised-button (click)="createLink()">
+								<mat-icon>insert_link</mat-icon>
+							</a> -->
+							<a mat-raised-button [matMenuTriggerFor]="createlink">
+								<mat-icon>insert_link</mat-icon>
+							</a>
+							<mat-menu #createlink="matMenu">
+								<input placeholder="http://url" [(ngModel)]="createLinkUrl"
+									(click)="$event.stopPropagation();">
+								<a mat-raised-button (click)="createLink()">
+									Add
+								</a>
+							</mat-menu>
+							<!-- <a mat-raised-button (click)="fileInput.click()">
+								<mat-icon>insert_photo</mat-icon>
+							</a>
+							<input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+								(change)="uploadFile($event)" hidden="true" /> -->
+							<!-- <a mat-raised-button (click)="iUnderline()">
+								<mat-icon>format_quote</mat-icon>
+							</a>
+							
+							<a mat-raised-button (click)="insertImage()">
+								<mat-icon>insert_photo</mat-icon>
+							</a> -->
+						</div>
+					</div>
+					<div>
+						<div #textbox2 class="editor" contenteditable="true" [ngModel]="model?.content"
+							(ngModelChange)="contentChanged($event)" (mouseup)="onTextSelected2()">
+						</div>
+					</div>
+					<div>
+						{{model?.content.html}}
+					</div>
+
+					<div [innerHTML]="model.content.html"></div>
+				</div>
+			</mat-tab>
+			<mat-tab label="custom editor2">
+				<h3>Custom Editor</h3>
+				<button mat-flat-button (click)="bold()"> Bold</button>
+				<button mat-flat-button (click)="underline()"> underline</button>
+				<button mat-flat-button (click)="itallic()"> Itallic</button>
+				<button mat-flat-button (click)="inlineBox()"> InlineBox</button>
+				<button mat-flat-button (click)="rightAlign()"> Right Align</button>
+				<button mat-flat-button (click)="newLine()"> New Line</button>
+				<button mat-flat-button (click)="clear()"> Clear</button>
+				<button mat-flat-button (click)="stepBack()"> Step Back</button>
+				<div>
+					<textarea #textbox (select)="onTextSelected()" [(ngModel)]="model?.content.html">
+			</textarea>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+
+
+		<!-- <div #textbox2 (mouseup)="onTextSelected2()" [innerHtml]="text" [(ngModel)]="text" contenteditable="true">
+			<div [innerHtml]="text" ></div>
+		</div> -->
+
+		<!-- <div>
+			<div [innerHtml]="text | safehtml"></div>
+		</div> -->
+
+		<!-- <div >
+			<div style="display: inline-block;">
+				Hello <b>harish</b> 
+			</div>
+			<div style="float: right;">How are you</div>
+		</div> -->
+	</div>
+</div>

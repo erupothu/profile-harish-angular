@@ -1,0 +1,23 @@
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+.star {
+    visibility:hidden;
+    font-size:30px;
+	cursor:pointer;
+	color: orange
+}
+.star:before {
+   content: "\2605";
+   position: absolute;
+   visibility:visible;
+}
+.star:checked:before {
+   content: "\2606";
+   position: absolute;
+}
+
+/* ::ng-deep mat-expansion-panel-header {
+    height: 100px !important;
+} */

@@ -1,0 +1,26 @@
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+ mat-cell {
+	font-size: 20px;
+	color: grey;
+}
+
+mat-header-cell {
+	font-size: 25px;
+	color: black;
+}
+
+mat-card {
+	width: 21%; 
+	margin: 1%;
+	border-radius: 25px;
+    border: 2px solid #eaeee4;
+}
+
+.example-table-container {
+  position: relative;
+  max-height: 500px;
+  overflow: auto;
+}

@@ -1,0 +1,65 @@
+<mat-card style="padding: 0px">
+	<mat-sidenav-container style="height:94vh">
+		<mat-sidenav mode="side" #sidenav3 role="navigation" position="end" fullscreen
+			style="width: 18vw;background-color: gainsboro;">
+			<div style="background-color: white;">
+				<a mat-flat-button style="margin-left: 210px" (click)="emailChatService.closeNav()"
+					*ngIf="(emailChatService.sideNav!=undefined && emailChatService.sideNav._animationState==='open')">
+					<mat-icon>close</mat-icon>
+				</a>
+			</div>
+			<mat-nav-list>
+				<div>
+					<div>
+						<ng-container *ngFor="let message of messages">
+							<div class="message"
+								[ngClass]="{ 'from': message.author === 'bot','to': message.author === 'user' }">
+								<div [innerHTML]="message.content"></div>
+							</div>
+						</ng-container>
+					</div>
+
+					<div
+						style="position: sticky; bottom: 2px;display: block;text-align: center; background-color: white;">
+						<input [(ngModel)]="value" (keyup.enter)="sendMessage()" placeholder="Text Here"
+							autocomplete="false"
+							style="outline-style: none;border: 1px solid blue;width: 10vw; margin: 5px; font-size: 16px;padding: 0.5vw;">
+						<button mat-flat-button (click)="sendMessage()"
+							style="display: inline-block; background-color: blue;">
+							<mat-icon>send</mat-icon>
+						</button>
+					</div>
+				</div>
+			</mat-nav-list>
+		</mat-sidenav>
+		<mat-sidenav-content style="background-color: bisque;padding: 0px;">
+			<div  style="background-color: white;">
+				<a mat-flat-button (click)="sidenav3.toggle()">
+					<mat-icon>menu</mat-icon>
+				</a>
+			</div>
+			<div mat-card-avatar class="example-header-image"
+				[style.background-image]="'url(https://material.angular.io/assets/img/examples/shiba1.jpg)'"
+				(click)="firstImageChat()"></div>
+			<div mat-card-avatar class="example-header-image"
+				[style.background-image]="'url(../../../../assets/images/people/felamle_photo2.jpeg)'"
+				(click)="secondImageChat()"></div>
+			<div mat-card-avatar class="example-header-image"
+				[style.background-image]="'url(../../../../assets/images/people/female_photo.jpeg)'"
+				(click)="thirdImageChat()"></div>
+			<div mat-card-avatar class="example-header-image"
+				[style.background-image]="'url(../../../../assets/images/people/female_photo3.jpeg)'"
+				(click)="fourthImageChat()"></div>
+			<div mat-card-avatar class="example-header-image"
+				[style.background-image]="'url(../../../../assets/images/people/male_photo1.jpeg)'"
+				(click)="firstImageChat()"></div>
+			<div mat-card-avatar class="example-header-image"
+				[style.background-image]="'url(../../../../assets/images/people/male_photo2.jpeg)'"
+				(click)="secondImageChat()"></div>
+			<div mat-card-avatar class="example-header-image"
+				[style.background-image]="'url(../../../../assets/images/people/male_photo3.jpeg)'"
+				(click)="thirdImageChat()"></div>
+		</mat-sidenav-content>
+
+	</mat-sidenav-container>
+</mat-card>

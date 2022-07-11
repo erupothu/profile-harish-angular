@@ -1,0 +1,101 @@
+<div fxLayout="row wrap" fxLayout.xs="column">
+	<div fxFlex="100" fxFlex.xs="100">
+		<div style="height: 15vh; background-color: darkcyan;">
+			<div style="margin-top: 1%; font-size: larger; color: gainsboro; font-weight: bold;padding: 10px;">
+				<span> Documentation</span>
+			</div>
+			<div style="text-align: center; font-size: 18px; color: white;">
+				<span> This is a Angular 9 Responsive Template.</span>
+			</div>
+		</div>
+	</div>
+	<div fxFlex="100" fxFlex.xs="100">
+		<div>
+			<mat-tab-group>
+				<mat-tab label="Version Release">
+					<div fxFlex="60" fxFlex.xs="100">
+					<div class="version-log" *ngFor="let item of versionData">
+						<mat-card style="margin: 20px;padding: 10px;">
+							<mat-card-header>
+								<mat-card-title>{{item.version}} </mat-card-title>( {{item.date}} )
+							</mat-card-header>
+							<mat-divider></mat-divider>
+							<mat-card-content style="padding: 10px;">
+								<div *ngFor="let feature of item.features">
+									<mat-chip [style.background-color]="feature.color"> {{feature.type}} </mat-chip>
+									<div>
+										<ul>
+											<li *ngFor="let listItems of feature.list"> {{listItems}} </li>
+										</ul>
+									</div>
+								</div>
+							</mat-card-content>
+						</mat-card>
+					</div>
+					</div>
+				</mat-tab>
+				<mat-tab label="Introduction">
+					<div fxFlex="60" fxFlex.xs="100">
+						<mat-card style="margin: 20px;padding: 10px;">
+							<div [innerHtml]="introduction"></div>
+						</mat-card>
+					</div>
+				</mat-tab>
+				<mat-tab label="Installation">
+					<div fxFlex="70" fxFlex.xs="100">
+						<mat-card style="margin: 20px;padding: 10px;">
+							<div [innerHtml]="installation"></div>
+						</mat-card>
+					</div>
+				</mat-tab>
+				<mat-tab label="External Packages">
+					<div fxFlex="100" fxFlex.xs="100">
+						<div class="component-tab">
+							<mat-tab-group>
+								<mat-tab label="Google map">
+									component1
+								</mat-tab>
+								<mat-tab label="D3 Graphs">
+									component1
+								</mat-tab>
+								<mat-tab label="CK Editor">
+									component1
+								</mat-tab>
+								<mat-tab label="Angular Editor">
+									component1
+								</mat-tab>
+								<mat-tab label="NGX Charts">
+									component1
+								</mat-tab>
+								<mat-tab label="NGX ECharts">
+									component1
+								</mat-tab>
+								<mat-tab label="NGX Device Detector">
+									component1
+								</mat-tab>
+								<mat-tab label="HammerJs">
+									component1
+								</mat-tab>
+								<mat-tab label="Angular Split">
+									component1
+								</mat-tab>
+								<mat-tab label="Breadcrumb">
+									component1
+								</mat-tab>
+								<mat-tab label="HighlightJs">
+									component1
+								</mat-tab>
+								<mat-tab label="Date Countdown">
+									component1
+								</mat-tab>
+								<mat-tab label="Ng Terminal">
+									component1
+								</mat-tab>
+							</mat-tab-group>
+						</div>
+					</div>
+				</mat-tab>
+			</mat-tab-group>
+		</div>
+	</div>
+</div>

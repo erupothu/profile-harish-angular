@@ -1,0 +1,63 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="100" style="background-color: darkcyan;">
+		<div style="padding: 5%; padding-top: 1%">
+			<span style="font-size: 50px;"> Products</span>
+			<span style="text-align: center; font-size: 30px; margin-left: 20%; border: 2px solid #3d7771">
+				<mat-icon>search</mat-icon>
+				<mat-form-field style="width: 40%">
+					<input matInput placeholder="search">
+				</mat-form-field>
+			</span>
+		</div>
+	</div>
+	<div fxFlex="90">
+		<mat-card style="width: 90%">
+			<mat-card-content class="example-table-container">
+				<mat-table [dataSource]="products">
+					<ng-container matColumnDef="select">
+						<mat-header-cell *matHeaderCellDef>
+							<mat-checkbox (change)="$event ? masterToggle() : null"
+								[checked]="selection.hasValue() && isAllSelected()"
+								[indeterminate]="selection.hasValue() && !isAllSelected()"
+								[aria-label]="checkboxLabel()">
+							</mat-checkbox>
+						</mat-header-cell>
+						<mat-cell *matCellDef="let row">
+							<mat-checkbox (click)="$event.stopPropagation()"
+								(change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+								[aria-label]="checkboxLabel(row)">
+							</mat-checkbox>
+						</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="name">
+						<mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+						<mat-cell *matCellDef="let element" (click)="getProductDetails(element)"> {{element.name}} </mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="category">
+						<mat-header-cell *matHeaderCellDef> Category</mat-header-cell>
+						<mat-cell *matCellDef="let element" (click)="getProductDetails(element)"> {{element.category}} </mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="price">
+						<mat-header-cell *matHeaderCellDef> Price</mat-header-cell>
+						<mat-cell *matCellDef="let element" (click)="getProductDetails(element)"> {{element.price}} </mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="total_quantity">
+						<mat-header-cell *matHeaderCellDef> Total Quantity</mat-header-cell>
+						<mat-cell *matCellDef="let element" (click)="getProductDetails(element)"> {{element.total_quantity}} </mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="quantity_left">
+						<mat-header-cell *matHeaderCellDef> Quantity Left</mat-header-cell>
+						<mat-cell *matCellDef="let element" (click)="getProductDetails(element)"> {{element.quantity_left}} </mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="active">
+						<mat-header-cell *matHeaderCellDef> Active</mat-header-cell>
+						<mat-cell *matCellDef="let element" (click)="getProductDetails(element)"> {{element.active}} </mat-cell>
+					</ng-container>
+
+					<mat-header-row *matHeaderRowDef="product_table_cols"></mat-header-row>
+					<mat-row *matRowDef="let rows; columns: product_table_cols"></mat-row>
+				</mat-table>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

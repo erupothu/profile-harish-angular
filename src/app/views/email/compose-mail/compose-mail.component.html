@@ -1,0 +1,37 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="80">
+		<mat-card>
+			<mat-card-title> COMPOSE MAIL</mat-card-title>
+		</mat-card>
+	</div>
+
+	<div fxFlex="80">
+		<mat-card>
+			<mat-card-header>
+				<div style="height: 50px; width: 30%; border: 2px solid gainsboro">
+					<mat-form-field style="width: 80%">
+						<input matInput placeholder="To">
+					</mat-form-field>
+				</div>
+				<div style="height: 50px; width: 30%; border: 2px solid gainsboro">
+					<mat-form-field style="width: 80%">
+						<input matInput placeholder="Bc">
+					</mat-form-field>
+				</div>
+				<div style="height: 50px; width: 30%; border: 2px solid gainsboro">
+					<mat-form-field style="width: 80%">
+						<input matInput placeholder="Cc">
+					</mat-form-field>
+				</div>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content style="height: 200px">
+				<!-- <ckeditor #editor [(ngModel)]="model.editorData" [editor]="Editor" [config]="config"></ckeditor> -->
+			</mat-card-content>
+			<mat-divider></mat-divider>
+			<mat-card-actions>
+				<button mat-flat-button> Send </button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
+</div>

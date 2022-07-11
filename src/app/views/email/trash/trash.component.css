@@ -1,0 +1,39 @@
+body {
+	color: #727E8C
+}
+mat-card {
+  margin-top: 10px;
+  cursor:pointer;
+}
+mat-card :hover {
+  background-color: gainsboro;
+}
+mat-card :nth-child(even) {
+  color: gray
+}
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.online {
+  display: inline-block;
+  margin: 10px;
+}
+
+
+.star {
+    visibility:hidden;
+    font-size:30px;
+	cursor:pointer;
+	color: orange
+}
+.star:before {
+   content: "\2605";
+   position: absolute;
+   visibility:visible;
+}
+.star:checked:before {
+   content: "\2606";
+   position: absolute;
+}
