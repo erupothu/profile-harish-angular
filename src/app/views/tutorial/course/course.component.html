@@ -1,0 +1,39 @@
+<div fxLayout="row wrap" fxLayoutAlign="center">
+	<div fxFlex="100%" style="background-color: blue; padding: 1%">
+		<button mat-icon-button>
+			<mat-icon>arrow_left</mat-icon>
+		</button>
+		<span> Basics of Angular</span>
+	</div>
+	<div fxFlex="20">
+		<mat-vertical-stepper [linear]="false" #stepper>
+			<div *ngFor="let course of couseContent">
+				<mat-step>
+					<ng-template matStepLabel>{{course.chapter_name}}</ng-template>
+				</mat-step>
+			</div>
+
+		</mat-vertical-stepper>
+	</div>
+	<div fxFlex="75">
+		{{stepper.selectedIndex}}
+		<div *ngFor="let course of couseContent">
+			<div *ngIf="stepper.selectedIndex == course.id" style="font-size: 25px; text-align: center;">
+				<mat-card style="margin-left: 20%; margin-right: 15%; height: 80vh;">
+					{{course.content}}
+				</mat-card>
+			</div>
+		</div>
+		<div style="position: absolute;left: 35%;bottom: 5%;">
+			<button mat-fab (click)="goBack()" [disabled]="stepper.selectedIndex === 0" color="primary">
+				<mat-icon>arrow_back</mat-icon>
+			</button>
+		</div>
+		<div style="position: absolute;right: 10%;bottom: 5%">
+			<button mat-fab (click)="goForward()" color="primary">
+				<mat-icon>arrow_forward</mat-icon>
+			</button>
+			<!-- [disabled]="stepper.selectedIndex === stepper._steps.length-1" -->
+		</div>
+	</div>
+</div>

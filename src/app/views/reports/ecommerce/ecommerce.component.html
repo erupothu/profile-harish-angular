@@ -1,0 +1,273 @@
+<div fxFlex fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start center" fxLayoutGap="2%">
+	<div fxLayout="row" fxFlex="30%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw; height: 35vh;">
+			<mat-card-header>
+				<mat-card-title>Congratulations John!</mat-card-title>
+				<mat-card-subtitle>Best seller of the month</mat-card-subtitle>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content style="padding: 10px;">
+				<table>
+					<tr>
+						<td>
+							<span style="color: blue; font-size: 30px"> 89K</span> <br>
+							<span> you have done 57.6% more sales today</span>
+							<br><br><br><br>
+							<div>
+								<button mat-raised-button color="primary">View Sales</button>
+							</div>
+						</td>
+						<td>
+							<div>
+								<img src="../../../../assets/png/cup-icon.png" style="width: 10vw; height: 20vh;">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<!-- <div fxLayout="row" fxFlex="30%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw;height: 35vh;">
+			<mat-card-header>
+				<mat-card-title>Visitor's of 2019</mat-card-title>
+				<span style="float: right;">
+					<mat-icon>more_vert</mat-icon>
+				</span>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content style="padding: 2vw;">
+				<div [chart]="pieChart"></div>
+			</mat-card-content>
+		</mat-card>
+	</div> -->
+
+	<!-- <div fxLayout="row" fxFlex="30%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw;height: 35vh;">
+			<mat-card-header>
+				<div>Revenue Growth</div>
+				<div>25,980<mat-icon>more_vert</mat-icon>
+				</div>
+			</mat-card-header>
+			<mat-card-content>
+				<div [chart]="stackChart"></div>
+			</mat-card-content>
+		</mat-card>
+	</div> -->
+
+	<!-- <div fxLayout="row" fxFlex="40%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw;height: 35vh;">
+			<mat-card-header>
+				<mat-card-title>Order Summary</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+			</mat-card-content>
+		</mat-card>
+	</div> -->
+	<div fxLayout="row" fxFlex="20%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw;height: 35vh;">
+			<mat-card-header>
+				<mat-card-title>Sales history</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<table>
+					<tr>
+						<td>
+							<h6>Airpods</h6>
+							<mat-card-subtitle>30 min ago</mat-card-subtitle>
+						</td>
+						<td>
+							50
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h6>iPhone</h6>
+							<mat-card-subtitle>2 hours ago</mat-card-subtitle>
+						</td>
+						<td>
+							59
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h6>Macbook</h6>
+							<mat-card-subtitle>1 day ago</mat-card-subtitle>
+						</td>
+						<td>
+							12
+						</td>
+					</tr>
+				</table>
+				<mat-divider></mat-divider>
+				<strong>Total Sales</strong>
+				<div>82,950.6</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<div fxLayout="row" fxFlex="30%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw;height: 35vh;">
+			<mat-card-header>
+				<mat-card-title>Latest Updates</mat-card-title>
+				<mat-form-field style="float: right;">
+					<mat-label>select year</mat-label>
+					<mat-select [(ngModel)]="selectedyear">
+						<mat-option *ngFor="let item of selectYear" [value]="item"> {{item}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<table>
+					<tr>
+						<td>
+							<h6>Total Products</h6>
+							<mat-card-subtitle>1.2k new products</mat-card-subtitle>
+						</td>
+						<td>16K</td>
+					</tr>
+					<tr>
+						<td>
+							<h6>Total Sales</h6>
+							<mat-card-subtitle>1.2k new sales</mat-card-subtitle>
+						</td>
+						<td>26M</td>
+					</tr>
+					<tr>
+						<td>
+							<h6>Total Revenue</h6>
+							<mat-card-subtitle>1.2k new revenu</mat-card-subtitle>
+						</td>
+						<td>15.8M</td>
+					</tr>
+				</table>
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<div fxLayout="row" fxFlex="30%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw;height: 35vh;">
+			<mat-card-header>
+				<mat-card-title> Earnings</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-tab-group [backgroundColor]="tabColor">
+					<mat-tab label="Rapo Design">
+						<table>
+							<tr>
+								<td>
+									<mat-card-title>Harish</mat-card-title>
+									<mat-card-subtitle>Developer</mat-card-subtitle>
+								</td>
+								<td>16K</td>
+							</tr>
+							<tr>
+								<td>
+									<mat-card-title>Vinny</mat-card-title>
+									<mat-card-subtitle>Designer</mat-card-subtitle>
+								</td>
+								<td>26M</td>
+							</tr>
+							<tr>
+								<td>
+									<mat-card-title>John</mat-card-title>
+									<mat-card-subtitle>Marketing</mat-card-subtitle>
+								</td>
+								<td>15.8M</td>
+							</tr>
+						</table>
+					</mat-tab>
+					<mat-tab label="Best Sellers">
+						<table>
+							<tr>
+								<td>
+									<mat-card-title>Vishnu</mat-card-title>
+									<mat-card-subtitle>Developer</mat-card-subtitle>
+								</td>
+								<td>16K</td>
+							</tr>
+							<tr>
+								<td>
+									<mat-card-title>Naveen</mat-card-title>
+									<mat-card-subtitle>Marketing</mat-card-subtitle>
+								</td>
+								<td>26M</td>
+							</tr>
+							<tr>
+								<td>
+									<mat-card-title>Vinod</mat-card-title>
+									<mat-card-subtitle>Design</mat-card-subtitle>
+								</td>
+								<td>15.8M</td>
+							</tr>
+						</table>
+					</mat-tab>
+					<mat-tab label="Marketing guide">
+						<table>
+							<tr>
+								<td>
+									<mat-card-title>Vishnu</mat-card-title>
+									<mat-card-subtitle>Developer</mat-card-subtitle>
+								</td>
+								<td>16K</td>
+							</tr>
+							<tr>
+								<td>
+									<mat-card-title>Naveen</mat-card-title>
+									<mat-card-subtitle>Marketing</mat-card-subtitle>
+								</td>
+								<td>26M</td>
+							</tr>
+							<tr>
+								<td>
+									<mat-card-title>Vinod</mat-card-title>
+									<mat-card-subtitle>Design</mat-card-subtitle>
+								</td>
+								<td>15.8M</td>
+							</tr>
+						</table>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<div fxLayout="row" fxFlex="62%" fxFlex.xs="100">
+		<mat-card style="margin: 10px;width: 90vw;height: 35vh;">
+			<mat-card-header>
+				<mat-card-title> Earnings</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<table>
+					<tr>
+						<td>
+							<mat-card-title>Total Products</mat-card-title>
+							<mat-card-subtitle>1.2k new products</mat-card-subtitle>
+						</td>
+						<td>16K</td>
+					</tr>
+					<tr>
+						<td>
+							<mat-card-title>Total Sales</mat-card-title>
+							<mat-card-subtitle>1.2k new sales</mat-card-subtitle>
+						</td>
+						<td>26M</td>
+					</tr>
+					<tr>
+						<td>
+							<mat-card-title>Total Revenue</mat-card-title>
+							<mat-card-subtitle>1.2k new revenu</mat-card-subtitle>
+						</td>
+						<td>15.8M</td>
+					</tr>
+				</table>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

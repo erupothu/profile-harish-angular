@@ -1,0 +1,15 @@
+::ng-deep .mat-form-field-underline {
+    display: none;
+}
+
+.side-button-custom {
+    width:250px; 
+    height: 50px; 
+    font-weight: bold; 
+    border-radius: 0 20px 20px 0;
+    margin: 2%;
+    margin-left: 0px;
+}
+span {
+    margin: 10px;
+}

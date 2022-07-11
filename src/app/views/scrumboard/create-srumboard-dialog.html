@@ -1,0 +1,21 @@
+<div style="margin: 10%; text-align: center;">
+	<div>
+		<mat-form-field appearance="outline">
+			<input matInput placeholder="Application name" [(ngModel)]="createScrumData.name">
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field appearance="outline">
+			<input matInput placeholder="Icon name" [(ngModel)]="createScrumData.icon">
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field appearance="outline">
+			<input matInput placeholder="Type name" [(ngModel)]="createScrumData.type">
+		</mat-form-field>
+	</div>
+	<div mat-dialog-actions>
+		<button mat-button (click)="onNoClick()">No Thanks</button>
+		<button mat-flat-button  cdkFocusInitial (click)="submit()"> SAVE</button>
+	</div>
+</div>

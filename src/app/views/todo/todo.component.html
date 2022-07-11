@@ -1,0 +1,181 @@
+<div fxLayout="column" fxLayout.xs="column">
+	<div fxFlex="100">
+		<div style="background-color: blue; padding: 2%;">
+			<span style="font-size: 25px; color: white; font-weight: 800;">
+				<mat-icon>check_box</mat-icon> To-Do
+			</span>
+			<span style="margin-left: 20%;">
+				<input
+					style="font-size: 16px; outline-style: none; background-color: white; width: 30vw; padding: 1vw;border-radius: 10px;">
+			</span>
+		</div>
+	</div>
+</div>
+<div fxLayout="row wrap" fxLayout.xs="column">
+	<div fxFlex="15" fxFlex.xs="100">
+		<div style="padding: 2%; text-align: center; width: 50%;">
+			<button mat-raised-button (click)="showData(newItem, true)"
+				style="background-color: blue; width:250px; height: 50px; color: white; font-weight: bold;"> ADD TASK
+			</button>
+		</div>
+		<div style="padding: 2%; width: 50%; padding-left: 0px;">
+			<button mat-raised-button [color]="selectAllColor" style="width:250px; height: 50px; font-weight: bold;"
+				(click)="getAllNotes()">
+				<mat-icon>menu</mat-icon> All
+			</button>
+		</div>
+		<div>
+			<span> FILTERS </span>
+		</div>
+		<div>
+			<button mat-raised-button [color]="selectStarredColor" class="side-button-custom"
+				(click)="getStarredData()">
+				<mat-icon>star</mat-icon> Starred
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button [color]="selectPriorityColor" class="side-button-custom"
+				(click)="getPriorityData()">
+				<mat-icon>menu</mat-icon> Priority
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button [color]="selectScheduledColor" class="side-button-custom"
+				(click)="getScheduledData()">
+				<mat-icon>calendar</mat-icon> Scheduled
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button [color]="selectDoneColor" class="side-button-custom" (click)="getDoneData()">
+				<mat-icon>done</mat-icon> Done
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button [color]="selectDeleteColor" class="side-button-custom" (click)="getDeletedData()">
+				<mat-icon>delete</mat-icon> Deleted
+			</button>
+		</div>
+		<div>
+			<button mat-raised-button [color]="selectTodayColor" class="side-button-custom" (click)="getTodayData()">
+				<mat-icon>calendar</mat-icon> Today
+			</button>
+		</div>
+	</div>
+	<div fxFlex="40" fxFlex.xs="100" style="margin: 1%;">
+
+		<div cdkDropList (cdkDropListDropped)="drop($event)">
+			<!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
+			<div *ngFor="let item of showSelectedItems" cdkDrag>
+				<mat-divider></mat-divider>
+				<mat-card style="width: 100%;">
+					<div style="display: inline-block; margin-right: 50px; margin-left: 50px; padding-bottom: 30px;">
+						<mat-checkbox [(ngModel)]="item.checked"></mat-checkbox>
+					</div>
+					<div style="display: inline-block;" (click)="showData(item, false)">
+						<mat-card-title><a>{{item.title}}</a></mat-card-title>
+						<div [innerHTML]="item.content"></div>
+						<div [innerHTML]="item.category"></div>
+					</div>
+					<div style="display: inline-block; float: right;">
+						<div style="padding-top: 30px;">
+							<span>
+								<button mat-flat-button (click)="importantSelected(item)">
+									<mat-icon>{{item.important?'error':'error_outline'}}</mat-icon>
+								</button>
+							</span>
+							<span>
+								<button mat-flat-button (click)="starSelected(item)">
+									<mat-icon>{{item.star?'star':'star_outline'}}</mat-icon>
+								</button>
+							</span>
+							<span>
+								<button mat-flat-button [matMenuTriggerFor]="menu">
+									<mat-icon>more_vert</mat-icon>
+								</button>
+								<mat-menu #menu="matMenu">
+									<button mat-flat-button (click)="deleteSelectedItem(item)">
+										<mat-icon>delete</mat-icon>
+									</button>
+								</mat-menu>
+							</span>
+						</div>
+					</div>
+				</mat-card>
+				<mat-divider></mat-divider>
+			</div>
+			<!-- </cdk-virtual-scroll-viewport> -->
+		</div>
+	</div>
+	<div fxFlex="40" fxFlex.xs="100" style="margin: 1%;">
+		<div>
+			<mat-card>
+				<mat-card-header>
+					<span>
+						<mat-checkbox [(ngModel)]="showItem.checked"></mat-checkbox>
+					</span>
+					<div style="margin-left: 70%;">
+						<span>
+							<mat-icon>error</mat-icon>
+						</span>
+						<span>
+							<mat-icon>star</mat-icon>
+						</span>
+						<span>
+							<mat-icon>more_vert</mat-icon>
+						</span>
+						<span>
+							<button mat-flat-button (click)="deleteSelectedItem(showItem)">
+								<mat-icon>delete</mat-icon>
+							</button>
+						</span>
+					</div>
+				</mat-card-header>
+				<mat-divider></mat-divider>
+				<mat-card-content>
+					<div style="padding: 3%; margin: 3%; font-size: 20px; font-weight: 300;">
+						<div *ngFor="let item of showItem.category" style=" margin: 2%;display: inline-block">
+							<mat-icon>lens</mat-icon> <span [innerHTML]="item"> </span>
+						</div>
+						<div>
+							<mat-form-field appearance="outline"
+								style="width: 84%;border-radius: 4px; margin: 2%;box-sizing: border-box;">
+								<input matInput placeholder="Titile" [(ngModel)]="showItem.title">
+							</mat-form-field>
+						</div>
+						<div>
+							<mat-form-field
+								style="width: 40%;border: 2px solid #ccc;border-radius: 4px; display: inline-block; margin: 2%;box-sizing: border-box;">
+								<mat-label>Choose a date</mat-label>
+								<input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1"
+									[(ngModel)]="showItem.start_date">
+								<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+								<mat-datepicker #picker1></mat-datepicker>
+							</mat-form-field>
+							<mat-form-field
+								style="width: 40%;border: 2px solid #ccc;border-radius: 4px;display: inline-block; margin: 2%;box-sizing: border-box;">
+								<mat-label>Choose a date</mat-label>
+								<input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker2"
+									[(ngModel)]="showItem.end_date">
+								<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+								<mat-datepicker #picker2></mat-datepicker>
+							</mat-form-field>
+						</div>
+						<div>
+							<mat-form-field
+								style="width: 84%;border: 2px solid #ccc;border-radius: 4px;  margin: 2%;box-sizing: border-box;">
+								<mat-label>Leave a comment</mat-label>
+								<textarea matInput placeholder="conteent." [(ngModel)]="showItem.content"></textarea>
+							</mat-form-field>
+						</div>
+						<div style="padding: 2%; margin: 2%;" *ngIf="newItemFlag">
+							<button mat-raised-button color="primary" (click)="saveItem()">SAVE</button>
+						</div>
+						<!-- <ng-template #disable>
+							<button mat-raised-button color="primary" (click)="saveItem()" disabled>SAVE</button>
+						</ng-template> -->
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div>

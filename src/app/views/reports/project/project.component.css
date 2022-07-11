@@ -1,0 +1,30 @@
+/* *, :after, :before {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+} */
+mat-divider {
+	border-top-width: 2px;	
+}
+mat-card-content{
+	padding: 10%;
+}
+mat-card-footer{
+	padding: 5%;
+}
+mat-card {
+	width: 21%; 
+	margin: 1%;
+	border-radius: 25px;
+    border: 2px solid #eaeee4;
+}
+
+ /* mat-cell {
+	font-size: 20px;
+	color: grey;
+}
+
+mat-header-cell {
+	font-size: 25px;
+	color: black;
+} */

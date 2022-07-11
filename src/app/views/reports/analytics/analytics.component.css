@@ -1,0 +1,86 @@
+mat-card {
+  margin: 1vw;
+}
+
+table {
+  width: 100%;
+}
+
+.example-viewport {
+  height: 400px;
+}
+
+.messaging-pannel {
+  height: 35px !important;
+  padding-top: 15px;
+  padding-left: 25px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+::ng-deep .user-bg-color .mat-tab-body-content {
+  background-color: #1E88E5;
+}
+
+.image-style {
+	height: 100px;
+    width: 100px;
+    background-size: cover;
+}
+
+.round-media-icons .fa {
+  float: right;
+  padding: 10px;
+  font-size: 20px;
+  width: 40px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+.fa-whatsapp {
+  background: #25d366;
+  color: white;
+}

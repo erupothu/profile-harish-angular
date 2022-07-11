@@ -1,0 +1,15 @@
+mat-chip {
+  width: 50px;
+}
+
+::ng-deep .mat-dialog-container {
+    padding: 0px !important;
+}
+
+::ng-deep .mat-divider {
+    border-top-width: 2px;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0 !important;
+}

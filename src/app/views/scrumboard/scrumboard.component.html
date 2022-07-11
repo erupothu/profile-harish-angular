@@ -1,0 +1,42 @@
+<!-- <div class="carousel">
+	<a class="carousel-item" href="#{{hrefs[i]}}!" *ngFor="let item of items;let i = index; let last = last">
+		<img src={{item}} />
+	</a>
+</div> -->
+
+<div fxLayout="row wrap">
+	<div fxFlex="100" style="height:90vh" [style.backgroundColor]="mycolor">
+		<div style="position: absolute;top: 20px;right: 50px;">
+			<button mat-fab [matMenuTriggerFor]="settingsMenu">
+				<mat-icon>settings</mat-icon>
+			</button>
+			<mat-menu #settingsMenu="matMenu">
+				<div *ngFor="let item of colorList">
+					<div style="margin: 1%; padding: 1%; font-size: 25px; font-weight: bold; cursor: pointer;"
+						[style.backgroundColor]="item" (click)="mycolor=item">
+						{{item}}
+					</div>
+				</div>
+			</mat-menu>
+		</div>
+
+		<div>
+			<div style="margin: 2%; padding: 2%;font-size: 30px; font-weight: bolder; text-align: center;">
+				<span> Srumborad </span>
+				<!-- https://www.npmjs.com/package/ng2-date-countdown supports  end="2020/03/11" or  end="2020-03-11" or July 22, 2020-->
+				<countdown units="Year | Month | Days | Hours | Minutes | Seconds"  end="2020-05-10"></countdown>
+			</div>
+			<div *ngFor="let item of scrumboardItems" (click)="gotoPannel(item)"
+				style="height: 300px; width: 300px; background-color: brown; font-size: 25px; font-weight: bold;padding: 2%;margin: 2%; text-align: center;display: inline-block; cursor: pointer;">
+				<mat-icon>{{item.icon}}</mat-icon>
+				<div>{{item.name}}</div>
+				<div>{{item.type}}</div>
+			</div>
+			<div style="position: absolute;bottom: 50px;right: 50px;">
+				<button mat-fab  (click)="addApplication()">
+					<mat-icon>add</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

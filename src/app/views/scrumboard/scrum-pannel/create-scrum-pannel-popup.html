@@ -1,0 +1,103 @@
+<div style="background-color: blue; color: white; width: 100%; height: 100px; padding: 6%;">
+	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+	<button mat-button [matMenuTriggerFor]="lable">
+		<mat-icon style="margin: 1%;">label</mat-icon>
+	</button>
+	<mat-menu #lable="matMenu">
+		<div *ngFor="let item of myData.lableList; let i=index">
+			<div style="padding: 3%;">
+				<mat-checkbox [(ngModel)]="item.checked" (click)="updateLable(item)" style="margin: 4%;"></mat-checkbox>
+				{{item.name}}
+			</div>
+			<mat-divider></mat-divider>
+		</div>
+	</mat-menu>
+	<button mat-button [matMenuTriggerFor]="member">
+		<mat-icon style="margin: 1%;">people</mat-icon>
+	</button>
+	<mat-menu #member="matMenu">
+		<div *ngFor="let item of myData.membersList; let i=index">
+			<div style="padding: 5%;">
+				<mat-checkbox [(ngModel)]="item.checked" (click)="updateMember(item)" style="margin: 4%;"></mat-checkbox>
+				<img mat-card-avatar [src]="item.url">
+				{{item.name}}
+			</div>
+			<mat-divider></mat-divider>
+		</div>
+	</mat-menu>
+
+	<mat-icon style="margin: 1%;">link</mat-icon>
+	<button mat-button (click)="updateSubscribe()">
+		<mat-icon style="margin: 1%;">{{myData.card.subscribe?'visibility':'visibility_off'}}</mat-icon>
+	</button>
+	<mat-icon style="margin-left: 30%;">close</mat-icon>
+</div>
+<div style="padding: 5%;margin: 2;">
+	<div>
+		<mat-form-field appearance="outline" style="width: 40%;margin: 1%;">
+			<mat-label>Title</mat-label>
+			<input matInput placeholder="Title" style="border: none;" [(ngModel)]="myData.card.title">
+		</mat-form-field>
+		<mat-form-field appearance="outline" style="width: 40%;margin: 1%;">
+			<mat-label>Choose a date</mat-label>
+			<input matInput [matDatepicker]="picker">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field appearance="outline" style="width: 90%;">
+			<mat-label>Description</mat-label>
+			<input matInput placeholder="Description" style="border: none;" [(ngModel)]="myData.card.description">
+		</mat-form-field>
+	</div>
+	<mat-divider></mat-divider>
+	<div style="font-size: 20px; font-weight: bold; margin: 2%;">
+		<span> Labels</span>
+		<mat-chip-list aria-label="Color selection">
+			<mat-chip *ngFor="let chip of myData.card.lables" selected [color]="chip.color">
+				{{chip.name}}
+			</mat-chip>
+		</mat-chip-list>
+	</div>
+	<div style="font-size: 20px; font-weight: bold; margin: 2%;">
+		<div>
+			<span> Members</span>
+		</div>
+		<div *ngFor="let img of myData.card.members" style="display: inline-block;margin: 3%;">
+			<img mat-card-avatar [src]="img.url">
+		</div>
+	</div>
+	<mat-divider></mat-divider>
+	<div>
+		<div style="font-size: 20px; font-weight: bold;margin: 2%;">
+			<span>checkList</span>
+		</div>
+		<div>
+			<mat-form-field appearance="outline" style="width: 60%;margin: 1%;">
+				<mat-label>check list name</mat-label>
+				<input matInput placeholder="checklist name" style="border: none;" [(ngModel)]="checklistItem.name">
+			</mat-form-field>
+			<button mat-fab (click)="addcheckList()"> <mat-icon>add</mat-icon> </button>
+		</div>
+		<div *ngFor="let check of myData.card.checkList">
+			<mat-checkbox [(ngModel)]="check.checked"></mat-checkbox> {{check.name}}
+		</div>
+	</div>
+	<mat-divider></mat-divider>
+	<div>
+		<div style="font-size: 20px; font-weight: bold;margin: 2%;">
+			<span>comments</span>
+		</div>
+		<div>
+			<mat-form-field appearance="outline" style="width: 60%;margin: 1%;">
+				<mat-label>check list name</mat-label>
+				<input matInput placeholder="checklist name" style="border: none;" [(ngModel)]="comments.name">
+			</mat-form-field>
+			<button mat-fab (click)="addComment()"> <mat-icon>add</mat-icon> </button>
+		</div>
+		<div *ngFor="let item of myData.card.comments">
+				<input matInput placeholder="comment" style="border: none;" [(ngModel)]="item.name" disabled>
+		</div>
+	</div>
+</div>

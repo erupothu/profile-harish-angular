@@ -1,0 +1,216 @@
+
+<!-- <div class="elfsight-app-db2d81e0-aed9-4cb2-ac25-7dbfe02d5b06">chat </div> -->
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="1%">
+	<div fxFlex="100" fxFlex.xs="100">
+		<div>
+			<div style="height: 23vh; background-color: darkcyan;">
+				<div style="margin-top: 1%; font-size: larger; color: gainsboro; font-weight: bold;padding: 10px;" ngStyle.xs="font-size: 12px">
+					<img mat-card-avatar [style.backgroundImage]="'url(../../../../assets/images/people/harish2.jpg)'"
+						class="image-style">
+					<span> ERUPOTHU HARISH</span>
+				</div>
+				<div style="text-align: center; font-size: 18px; color: white;"  ngStyle.xs="font-size: 12px">
+					<span > This is a Angular 9 Responsive Template.</span>
+				</div>
+				
+				<div class="round-media-icons" ngStyle.xs="font-size: 12px">
+					<a href="https://www.facebook.com/angularthemes/posts/110562793963424" target="_blank" target="_blank" class="fa fa-facebook" matTooltip="facebook" ngStyle.xs="font-size: 12px"></a>
+					<a href="https://twitter.com/ErupothuHarish/status/1253016779154001920?ref_src=twsrc%5Etfw" target="_blank" class="fa fa-twitter" matTooltip="twitter" ngStyle.xs="font-size: 12px"></a>
+					<!-- <a href="#" target="_blank" class="fa fa-google" matTooltip="google"></a> -->
+					<a href="https://www.linkedin.com/feed/update/urn:li:activity:6658787999553327104" target="_blank" class="fa fa-linkedin" matTooltip="linkedin" ngStyle.xs="font-size: 12px"></a>
+					<a href="https://studio.youtube.com/channel/UC-9K9yPaZ3HTem6_Q18aRYw" target="_blank" class="fa fa-youtube" matTooltip="youtube" ngStyle.xs="font-size: 12px"></a>
+					<!-- <a href="https://www.facebook.com/Easternspace-110458547307182/?modal=admin_todo_tour" target="_blank" class="fa fa-instagram" matTooltip="instagram"></a> -->
+					<a href="https://api.whatsapp.com/send?phone=+918464044323" class="fa fa-whatsapp" matTooltip="whatsapp" target="_blank" ngStyle.xs="font-size: 12px"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div fxFlex="60" fxFlex.xs="100">
+		<mat-card style="padding: 0; background-color: blue;">
+			<mat-card-header>
+				<mat-card-title>Website Analytics</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-tab-group class="user-bg-color">
+					<mat-tab label="Users">
+						<div>
+							<ngx-charts-area-chart [view]="view2" [scheme]="colorScheme" [legend]="true"
+								[showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+								[timeline]="true" [results]="usersData">
+							</ngx-charts-area-chart>
+						</div>
+					</mat-tab>
+					<mat-tab label="Events count">
+						<div class="user-bg-color">
+							<ngx-charts-area-chart [view]="view2" [scheme]="colorScheme" [legend]="true"
+								[showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+								[timeline]="true" [results]="eventsData">
+							</ngx-charts-area-chart>
+						</div>
+					</mat-tab>
+					<mat-tab label="Conversions">
+						<div class="user-bg-color">
+							<ngx-charts-area-chart [view]="view2" [scheme]="colorScheme" [legend]="true"
+								[showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+								[timeline]="true" [results]="conversion">
+							</ngx-charts-area-chart>
+						</div>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div fxFlex="35" fxFlex.xs="100">
+		<mat-card style="min-height: 93%;max-height: 93%;flex: 1 1 auto;">
+			<mat-card-header>
+				<mat-card-title> User Activity </mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-tab-group>
+					<mat-tab label="Device Info">
+						<div *ngIf="visitorInfo!=undefined" style="font-size: 18px; font-family: Loto;padding: 2vw;">
+							<mat-list-item> Browser: {{visitorInfo.deviceInfo.browser}} </mat-list-item>
+							<mat-list-item> Browser Version: {{visitorInfo.deviceInfo.browser_version}}</mat-list-item>
+							<mat-list-item> Device: {{visitorInfo.deviceInfo.device}} </mat-list-item>
+							<mat-list-item> OS: {{visitorInfo.deviceInfo.os}} </mat-list-item>
+						</div>
+					</mat-tab>
+					<mat-tab label="Location">
+						<div *ngIf="visitorInfo!=undefined" style="font-size: 18px; font-family: Loto;padding: 2vw;">
+							<mat-list-item> Country: {{visitorInfo.country}} </mat-list-item>
+							<mat-list-item> Region: {{visitorInfo.regionName}} </mat-list-item>
+							<mat-list-item> IP: {{visitorInfo.ip}} </mat-list-item>
+							<!-- <mat-list-item> {{visitorInfo.country}} </mat-list-item> -->
+						</div>
+					</mat-tab>
+					<mat-tab label="Visited Pages">
+						<div *ngIf="visitorInfo!=undefined"
+							style="font-size: 18px; font-family: Loto;padding: 2vw;height: 400px;">
+							<div *ngFor="let item of visitorInfo.visitedPages">
+								<mat-list-item> {{item}} </mat-list-item>
+							</div>
+						</div>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div fxFlex="60" fxFlex.xs="100">
+		<mat-card style="flex: 1 1 auto;height: 520px;">
+			<mat-card-header>
+				<mat-card-title>Visitors vs Events</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-tab-group>
+					<mat-tab label="visitor events">
+						<div>
+							<ngx-charts-area-chart [view]="view2" [scheme]="colorScheme" [legend]="true"
+								[showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+								[timeline]="true" [results]="visitorsVsEvents">
+							</ngx-charts-area-chart>
+						</div>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div fxFlex="35" fxFlex.xs="100">
+		<mat-card style="flex: 1 1 auto;">
+			<mat-card-header>
+				<mat-card-title> User Activity History </mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-tab-group>
+					<mat-tab label="By Device">
+						<div *ngIf="visitorInfo!=undefined">
+							<ngx-charts-advanced-pie-chart [view]="view" [scheme]="colorScheme" [results]="deviceData"
+								[gradient]="gradient">
+							</ngx-charts-advanced-pie-chart>
+						</div>
+					</mat-tab>
+					<mat-tab label="By Location">
+						<div>
+							<ngx-charts-bar-vertical [results]="locationData" [view]="view" [scheme]="colorScheme"
+								[barPadding]="50" [gradient]="gradient" [xAxis]="true" [yAxis]="true" [legend]="true"
+								[legendTitle]="'Location'" [xAxisLabel]="'location'" [yAxisLabel]="'Visitors'"
+								[showXAxisLabel]="true" [showYAxisLabel]="true">
+							</ngx-charts-bar-vertical>
+						</div>
+					</mat-tab>
+					<mat-tab label="By Visited Pages">
+						<div>
+							<ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="visitedPages"
+								[gradient]="gradient" [xAxis]="true" [yAxis]="true" [legend]="true"
+								[showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="'Month of Year'"
+								[yAxisLabel]="'visited pages'">
+							</ngx-charts-line-chart>
+						</div>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div fxFlex="75" fxFlex.xs="100">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Website Analytics</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-tab-group>
+					<mat-tab label="india">
+						india map
+						<div #chart id="chart" style="background-color: gray"></div>
+					</mat-tab>
+					<mat-tab label="World map">
+						World map
+						<div #world id="world" style="background-color: gray;"></div>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div fxFlex="75" fxFlex.xs="100">
+		<mat-card>
+			<mat-card-header>
+				<mat-card-title>Website Analytics</mat-card-title>
+			</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-tab-group>
+					<mat-tab label="Google Map">
+						<div #map style="height:600px"></div>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>
+
+<div style="position: fixed;bottom: 1%;right: 1%;">
+	<mat-accordion class="example-headers-align">
+		<mat-expansion-panel style="width: 20vw;background-color: gainsboro;" hideToggle>
+			<mat-expansion-panel-header class="messaging-pannel">
+				<mat-panel-title>
+					Chat Bot
+				</mat-panel-title>
+				<mat-panel-description>
+					Ask Help
+					<mat-icon>textsms</mat-icon>
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<hr>
+			<cdk-virtual-scroll-viewport itemSize="1" class="example-viewport">
+				<app-chat-bot></app-chat-bot>
+			</cdk-virtual-scroll-viewport>
+		</mat-expansion-panel>
+	</mat-accordion>
+	<!-- <button mat-flat-button color="primary" style="width: 500px">
+		this is for chating
+	</button> -->
+</div>

@@ -1,0 +1,50 @@
+<div fxLayout="row wrap" fxLayoutAlign="center">
+	<div fxFlex="100">
+		<div style="text-align: center; background-color: blueviolet; height: 20vh">
+			<div style="font-size: 50px; padding-top: 2%">
+				WELCOME TO TUTORIAL
+			</div>
+			<div>
+				<span>
+					Our courses will help you learning the basic concept of the course and buidling small applications
+					and adding extra features
+				</span>
+			</div>
+		</div>
+	</div>
+	<div fxFlex="80" fxLayout="row wrap">
+		<div fxFlex="80">
+			<div>
+				<mat-form-field appearance="outline">
+					<!-- [(ngModel)]="searchCourse.name"  -->
+					<input matInput placeholder="enter key word" (keyup)="applyFilterOnCources($event.target.value)">
+				</mat-form-field>
+				<span style="flex: 1 1 auto"></span>
+				 <mat-form-field style="margin-left: 50%">
+                <mat-label>Category</mat-label>
+                <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="searchCategory(selectedCategory)">
+                  <mat-option *ngFor="let course of myData" [value]="course.category">
+                    {{course.category}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+			</div>
+		</div>
+		<div fxFlex="25" *ngFor="let course of courses">
+			<mat-card style="margin: 5%;" appMaterialElevation matRipple>
+				<mat-card-header [style.background-color]="course.color" style="padding: 5%;font-size: 20px">
+					<div [innerHTML]="course.category"></div>
+					<span style="flex: 1 1 auto"></span>
+					<div [innerHTML]="course.time"></div>
+				</mat-card-header>
+				<mat-card-content style="padding: 25%">
+					<div [innerHTML]="course.name" style="font-size: 20px"></div>
+					<div [innerHTML]="course.updated_date" style="font-size: 15px"></div>
+				</mat-card-content>
+				<mat-card-footer style="text-align:center; padding: 5%">
+					<button mat-flat-button color="primary" (click)="goToCourse(course)"><div [innerHTML]="course.action"></div></button>
+				</mat-card-footer>
+			</mat-card>
+		</div>
+	</div>
+</div>
