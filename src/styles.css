@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+
+html {
+  min-height:100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position:relative;
+  width:100%;
+  margin: 0px;
+  font-family: Loto;
+  font-size: 18px;
+}
+body {
+  background-color:#e6e6e6;
+  color:#FFF;
+  font-weight:100;
+  margin:0;
+  min-height:100%;
+  width:100%;
+  font-family: Loto;
+  
+}
+
+/* Hide scrollbar but still scroll works */
+::-webkit-scrollbar {
+display: none;
+}
+.container {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+a {
+  text-decoration:none;
+}
+a img {
+  border:none;
+}
+
+
+p {
+  /* font-size:1.5em; */
+}
+input,textarea {
+  -webkit-appearance:none;
+  background-color:#f7f7f7;
+  border:none;
+  border-radius:3px;
+  font-size:1em;
+  font-weight:100;
+}
+input:focus,textarea:focus {
+  border:none;
+  outline:2px solid #7ed7b9;
+}
+.left {
+  float:left;
+}
+.right {
+  float:right;
+}
