@@ -1,0 +1,93 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center">
+	<div fxFlex="100" fxFlex.xs="100" style="background-color: blue; padding: 2%;">
+		<span style="color: white;">
+			<mat-icon>contacts</mat-icon><span style=" font-size: 2vw; margin-left: 1%;">Contacts</span>
+		</span>
+		<span style="margin-left: 20%;">
+			<input style="font-size: 16px; outline-style: none; background-color: white; width: 30vw; padding: 1vw;border-radius: 10px;">
+		</span>
+	</div>
+	<div fxFlex="15" fxFlex.xs="100">
+		<mat-card style="margin: 2%; border-radius: 20px;height: 300px">
+			<mat-card-header>E Harish</mat-card-header>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<mat-list>
+					<mat-list-item style="background-color: blue;width: 100%;border-radius: 0 20px 20px 0;">
+						<button mat-button (click)="showFrequentContacts=true">All Contacts</button>
+					</mat-list-item>
+					<br>
+					<mat-list-item style="background-color: blue;width: 100%;border-radius: 0 20px 20px 0;"> 
+						<button mat-button (click)="showFrequentContacts=true">Frequent Contacts</button>
+					</mat-list-item>
+					<br>
+					<mat-list-item style="background-color: blue;width: 100%;border-radius: 0 20px 20px 0;"> 
+						<button mat-button (click)="showStaredContacts=true">Stared Contacts</button>
+					</mat-list-item>
+				</mat-list>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div fxFlex="75" fxFlex.xs="100">
+		<mat-card style="padding: 2%; margin: 2%; border-radius: 20px;">
+			<mat-card-content *ngIf="showAllContacts">
+				<mat-table [dataSource]="allContacts" style="width: 100%;">
+					<ng-container matColumnDef="select">
+						<mat-header-cell *matHeaderCellDef>
+							<mat-checkbox (change)="$event ? masterToggle() : null"
+								[checked]="selection.hasValue() && isAllSelected()"
+								[indeterminate]="selection.hasValue() && !isAllSelected()"
+								[aria-label]="checkboxLabel()">
+							</mat-checkbox>
+						</mat-header-cell>
+						<mat-cell *matCellDef="let row">
+							<mat-checkbox (click)="$event.stopPropagation()"
+								(change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+								[aria-label]="checkboxLabel(row)">
+							</mat-checkbox>
+						</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="imageUrl" >
+						<mat-header-cell *matHeaderCellDef> </mat-header-cell>
+					<mat-cell *matCellDef="let element"> 
+						<mat-card>
+							<img mat-card-avatar [style.backgroundImage]="'url('+ element.imageUrl +')'" class="adjust-image">
+						</mat-card>
+					</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="name">
+						<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="email">
+						<mat-header-cell *matHeaderCellDef> Email</mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="phone">
+						<mat-header-cell *matHeaderCellDef> Phone</mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.phone}}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="job_title">
+						<mat-header-cell *matHeaderCellDef> Job Title </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.job_title}}</mat-cell>
+					</ng-container>
+					<ng-container matColumnDef="star">
+						<mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+					<mat-cell *matCellDef="let element"> 
+						<input class="star" type="checkbox" title="bookmark" style="margin: 15%;">
+						<button mat-button [matMenuTriggerFor]="delContact"><mat-icon>more_vert</mat-icon></button>
+						<mat-menu #delContact="matMenu">
+							<button mat-menu-item >
+								<mat-icon>delete</mat-icon> delete
+							</button>
+						</mat-menu>
+					</mat-cell>
+					</ng-container>
+
+					<mat-header-row *matHeaderRowDef="allContactsColumms"></mat-header-row>
+					<mat-row *matRowDef="let row; columns: allContactsColumms" (click)="openDialog(row)" ></mat-row>
+				</mat-table>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+:host ::ng-deep .mat-tab-group {
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-tab-header {
+  border-bottom: none;
+}
+
+:host ::ng-deep .mat-tab-header-pagination {
+  display: none !important;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  flex-direction: column;
+}
+
+:host ::ng-deep .mat-ink-bar {
+  height: 100%;
+  left: 98% !important;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  flex: 1 1 auto;
+}
+
+mat-card {
+  margin: 10px;
+}
+
+.header {
+  font-size: 30px;
+  height: 100px;
+  background-color: green;
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+
+.content {
+  padding: 20px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.content mat-form-field {
+  font-size: 5px;
+  width: 45%;
+  margin: 10px;
+}
+
+.content input {
+  border: none;
+  outline: none;
+  border: 1 solid blue; 
+  padding: 10px;
+  font-size: 16px;
+}
+
+mat-label {
+  font-size: 20px;
+}
+
+::ng-deep .mat-card-header-text {
+  margin: 0 16px;
+  width: 100%;
+  padding: 30px;
+}

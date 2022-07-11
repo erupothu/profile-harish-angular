@@ -1,0 +1,41 @@
+<div fxLayout="row wrap" fxLayoutAlign="right">
+	<div fxFlex="100%" style="text-align: center;">
+
+		<div style="background-color: blue;">
+			<div style="text-align: left;">
+				<span style="font-size: 25px; padding: 1%;">Edit contact</span>
+				<span style="margin-left: 60%;"></span>
+				<button mat-icon-button>
+					<mat-icon style="color: white;padding: 20%;">close</mat-icon>
+				</button>
+			</div>
+			<img mat-card-avatar [style.backgroundImage]="'url('+ data.contactsData.imageUrl +')'"
+				style="height: 200px;width: 200px;background-size: cover; margin: 10%;">
+			<div [innerHTML]="data.contactsData.name" style="margin: 10%; font-size: 50px;"></div>
+		</div>
+		<mat-divider style="border-top-width: 4px;margin: 5%;"></mat-divider>
+		<div>
+			<mat-form-field appearance="outline">
+				<input matInput placeholder="name" [(ngModel)]="data.contactsData.name">
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="outline">
+				<input matInput placeholder="email" [(ngModel)]="data.contactsData.email">
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="outline">
+				<input matInput placeholder="phone" [(ngModel)]="data.contactsData.phone">
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="outline">
+				<input matInput placeholder="job_title" [(ngModel)]="data.contactsData.job_title">
+			</mat-form-field>
+		</div>
+		<div style="position: absolute;right: 42%;bottom: 10%;">
+			<button mat-flat-button>SAVE</button>
+		</div>
+	</div>
+</div>

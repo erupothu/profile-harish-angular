@@ -1,0 +1,36 @@
+<div fxLayout="row wrap" fxLayout.xs="column">
+	<div fxFlex="100">
+		<div>
+			<h4>New Version Release</h4>
+		</div>
+		<div class="version-inputs">
+			<div>
+				<input placeholder="version name" [(ngModel)]="data.versionObj.name" style="outline-style: none; border: 1px solid blue;padding: 10px;margin: 10px;">
+			</div>
+			<div>
+				<input placeholder="version name" [(ngModel)]="data.versionObj.version" style="outline-style: none; border: 1px solid blue;padding: 10px;margin: 10px;">
+			</div>
+			<div>
+				<input placeholder="version name" [(ngModel)]="data.versionObj.date" style="outline-style: none; border: 1px solid blue;padding: 10px;margin: 10px;">
+			</div>
+			<div *ngFor="let featureItem of data.versionObj.features; let i=index" style="margin-left: 50px;">
+				<button (click)="data.versionObj.features.push(featureItem)"><mat-icon>add</mat-icon> </button>
+				<div>
+					<input placeholder="version name" [(ngModel)]="featureItem.type" style="outline-style: none; border: 1px solid blue;padding: 10px;margin: 10px;">
+				</div>
+				<div>
+					<input placeholder="version name" [(ngModel)]="featureItem.color" style="outline-style: none; border: 1px solid blue;padding: 10px;margin: 10px;">
+				</div>
+				<div *ngFor="let feature of featureItem.list; let j=index" style="margin-left: 100px;">
+					<input placeholder="version name" [(ngModel)]="data.versionObj.features[i].list[j]" style="outline-style: none; border: 1px solid blue;padding: 10px;margin: 10px;">
+				</div>
+			</div>
+		</div>
+		<div>
+			<button mat-raised-button >Save</button>
+		</div>
+		<div>
+			{{data.versionObj | json}}
+		</div>
+	</div>
+</div>

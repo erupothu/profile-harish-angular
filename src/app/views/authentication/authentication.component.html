@@ -1,0 +1,174 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="100">
+		<!-- <button (click)="authSideNav.toggle()"> login</button> -->
+		<mat-sidenav-container style="height: 90vh">
+			<mat-sidenav #authSideNav mode="side" position="end" class="sideNavBackgroundImage">
+				<div *ngIf="authService.clickStatus=='login'" style="width: 300px;">
+					<mat-card>
+						<mat-card-header>
+							<div style="cursor: pointer; margin-left: 80%">
+								<span (click)="authService.closeNav()">
+									<mat-icon> close </mat-icon>
+								</span>
+							</div>
+						</mat-card-header>
+						<mat-divider></mat-divider>
+						<mat-card-content style="text-align: center; height: 81vh; padding-top: 10%; font-size: 20px">
+							<div style="font-size: 20px; padding: 11%">
+								<mat-card-title>LOGIN</mat-card-title>
+							</div>
+							<div class="login-form">
+								<div >
+									<input placeholder="Enter Name" autocomplete="off" required>
+									<mat-icon>people</mat-icon>
+								</div>
+								<div>
+									<input [type]="hide ? 'password' : 'text'" placeholder="password" autocomplete="off">
+									<button mat-icon-button matSuffix (click)="hide = !hide">
+										<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+									</button>
+								</div>
+							</div>
+							<div>
+								<mat-checkbox>
+									<mat-option value="check">Remember Me</mat-option>
+								</mat-checkbox>
+								<a href="/">Forgot Password?</a>
+							</div>
+							<button mat-flat-button color="primary"> Login</button>
+							<div style="padding: 10%">
+								<span> don't have an account?</span>
+							</div>
+							<a href="/" style="padding: 5%"> create an account</a>
+						</mat-card-content>
+					</mat-card>
+				</div>
+				<div *ngIf="authService.clickStatus=='register'" style="width: 300px">
+					<mat-card>
+						<mat-card-header>
+							<div style="cursor: pointer; margin-left: 80%">
+								<span (click)="authService.closeNav()">
+									<mat-icon> close </mat-icon>
+								</span>
+							</div>
+						</mat-card-header>
+						<mat-divider></mat-divider>
+						<mat-card-content style="text-align: center; height: 81vh; padding-top: 10%">
+							<div style="font-size: 20px; padding: 11%">
+								CREATE AN ACCOUNT
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="username">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="name">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput type="email" placeholder="email">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput type="password" placeholder="password">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="company">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-form-field appearance="outline">
+									<input matInput placeholder="location">
+								</mat-form-field>
+							</div>
+							<div>
+								<mat-checkbox>
+									<mat-option value="check">I read and Accept</mat-option>
+								</mat-checkbox>
+								<a href="/"> terms and conditions</a>
+							</div>
+							<button mat-flat-button color="primary"> Create Account</button>
+							<div style="padding: 10%">
+								<span> Already have an acccount</span>
+							</div>
+							<a href="/" style="padding: 5%">Login</a>
+						</mat-card-content>
+					</mat-card>
+				</div>
+				<div *ngIf="authService.clickStatus=='forgot'" style="width: 300px">
+					<div>
+						<mat-card style="height: 88vh">
+							<mat-card-header>
+								<div style="cursor: pointer; margin-left: 80%">
+									<span (click)="authService.closeNav()">
+										<mat-icon> close </mat-icon>
+									</span>
+								</div>
+							</mat-card-header>
+							<mat-card-content style="padding: 20%; text-align: center">
+								<div style="font-size: 20px; padding: 11%">
+									<mat-card-title>RECOVER YOUR PASSWORD</mat-card-title>
+								</div>
+								<div>
+									<mat-form-field appearance="outline">
+										<input matInput type="email" placeholder="Email" required>
+									</mat-form-field>
+								</div>
+								<button mat-flat-button color="primary">SEND RESET LINK</button>
+								<div style="padding: 15%">
+									<a href="/"> go back to login</a>
+								</div>
+							</mat-card-content>
+						</mat-card>
+					</div>
+				</div>
+				<div *ngIf="authService.clickStatus=='reset_password'" style="width: 300px">
+					<div>
+						<mat-card style="height: 88vh">
+							<mat-card-header>
+								<div style="cursor: pointer; margin-left: 80%">
+									<span (click)="authService.closeNav()">
+										<mat-icon> close </mat-icon>
+									</span>
+								</div>
+							</mat-card-header>
+							<mat-card-content style="padding: 20%; text-align: center">
+								<div style="font-size: 20px; padding: 11%">
+									<mat-card-title>RESET YOUR PASSWORD</mat-card-title>
+								</div>
+								<div>
+									<mat-form-field appearance="outline">
+										<input matInput type="email" placeholder="Email" required>
+									</mat-form-field>
+								</div>
+								<div>
+									<mat-form-field appearance="outline">
+										<input matInput type="password" placeholder="password" required>
+									</mat-form-field>
+								</div>
+								<div>
+									<mat-form-field appearance="outline">
+										<input matInput type="password" placeholder="password(confirm)" required>
+									</mat-form-field>
+								</div>
+								<button mat-flat-button color="primary">SEND RESET LINK</button>
+								<div style="padding: 10%">
+								</div>
+								<a href="/" style="padding: 5%"> go back to login</a>
+							</mat-card-content>
+						</mat-card>
+					</div>
+				</div>
+			</mat-sidenav>
+			<mat-sidenav-content class="backgroundImage">
+				<router-outlet></router-outlet>
+			</mat-sidenav-content>
+		</mat-sidenav-container>
+	</div>
+</div>

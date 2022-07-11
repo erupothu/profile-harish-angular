@@ -1,0 +1,39 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column">
+	<div fxFlex="40" fxFlex.xs="90">
+		<mat-card>
+			<mat-card-content>
+				<div class="login-form">
+					<div style="text-align: center;padding: 20px; font-size: 30px; font-weight: bold;">
+						<span>LOGIN</span>
+					</div>
+					<div>
+							<h5>This Admin Module follow IAM (Role based Access pages)</h5>
+						<div>
+							<span style="color: green"><strong>Admin Role access:</strong> admin/admin</span> (admin can view documentation,
+							home and contactus pages)
+						</div>
+						<div>
+							<span style="color: blue"><strong>User Role access:</strong> admin/admin</span> (user can view documentation page)
+						</div>
+					</div>
+					<div>
+						<div class="login-input">
+							<input placeholder="Enter Name" [(ngModel)]="user.username" autocomplete="off" required>
+							<mat-icon>people</mat-icon>
+						</div>
+						<div class="login-input">
+							<input [type]="hide ? 'password' : 'text'" placeholder="password"
+								[(ngModel)]="user.password" autocomplete="off">
+							<button mat-icon-button matSuffix (click)="hide = !hide">
+								<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+							</button>
+						</div>
+					</div>
+					<div style="text-align: center;">
+						<button class="login-btn" (click)="authenticate()"> Login</button>
+					</div>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

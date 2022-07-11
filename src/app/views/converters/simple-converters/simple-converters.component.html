@@ -1,0 +1,168 @@
+<mat-tab-group>
+	<mat-tab label="Weight converter">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxLFlex="80">
+				<mat-card style="width: 1000px;padding: 0px;">
+					<mat-card-header class="header">
+						<mat-card-title>
+							Weight Converter
+						</mat-card-title>
+					</mat-card-header>
+					<mat-card-content>
+						<div class="content">
+							<mat-form-field appearance="outline">
+								<mat-label>pounds</mat-label>
+								<input matInput type="number" placeholder="pounds" [(ngModel)]="pound"
+									(keyup)="poundToOthers()">
+							</mat-form-field>
+							<mat-form-field appearance="outline">
+								<mat-label>kilogram</mat-label>
+								<input matInput type="number" placeholder="kilogram" [(ngModel)]="kilogram"
+									(keyup)="kilogramToOthers()">
+							</mat-form-field>
+						</div>
+
+						<div class="content">
+							<mat-form-field appearance="outline">
+								<mat-label>ounces</mat-label>
+								<input matInput type="number" placeholder="Ounces" [(ngModel)]="ounces"
+									(keyup)="ouncesToOthers()">
+							</mat-form-field>
+							<mat-form-field appearance="outline">
+								<mat-label>grams</mat-label>
+								<input matInput type="number" placeholder="Grams" [(ngModel)]="grams"
+									(keyup)="gramsToOthers()">
+							</mat-form-field>
+						</div>
+						<div class="content">
+							<mat-form-field appearance="outline">
+								<mat-label>stones</mat-label>
+								<input matInput type="number" placeholder="stones" [(ngModel)]="stones"
+									(keyup)="stonesToOthers()">
+							</mat-form-field>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</mat-tab>
+	<mat-tab label="Temparature converter">
+		<mat-card style="width: 1000px;padding: 0px;">
+			<mat-card-header class="header">
+				<mat-card-title>
+					Temparature Converter
+				</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>fahrenheit</mat-label>
+						<input matInput type="number" placeholder="fahrenheit" [(ngModel)]="fahrenheit"
+							(keyup)="fahrenheitToOthers()">
+					</mat-form-field>
+					<mat-form-field appearance="outline">
+						<mat-label>celsius</mat-label>
+						<input matInput type="number" placeholder="celsius" [(ngModel)]="celsius"
+							(keyup)="celsiusToOthers()">
+					</mat-form-field>
+				</div>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>kelvin</mat-label>
+						<input matInput type="number" placeholder="kelvin" [(ngModel)]="kelvin"
+							(keyup)="kelvinToOthers()">
+					</mat-form-field>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</mat-tab>
+	<mat-tab label="Length converter">
+		<mat-card style="width: 1000px;padding: 0px;">
+			<mat-card-header class="header">
+				<mat-card-title>
+					Length Converter
+				</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>meters</mat-label>
+						<input matInput type="number" placeholder="meters" [(ngModel)]="meters"
+							(keyup)="metersToOthers()">
+					</mat-form-field>
+					<mat-form-field appearance="outline">
+						<mat-label>feet</mat-label>
+						<input matInput type="number" placeholder="feet" [(ngModel)]="feet"
+							(keyup)="feetToOthers()">
+					</mat-form-field>
+				</div>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>inches</mat-label>
+						<input matInput type="number" placeholder="inches" [(ngModel)]="inches"
+							(keyup)="inchesToOthers()">
+					</mat-form-field>
+					<mat-form-field appearance="outline">
+						<mat-label>cm</mat-label>
+						<input matInput type="number" placeholder="cm" [(ngModel)]="cm"
+							(keyup)="cmToOthers()">
+					</mat-form-field>
+				</div>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>yards</mat-label>
+						<input matInput type="number" placeholder="yards" [(ngModel)]="yards"
+							(keyup)="yardsToOthers()">
+					</mat-form-field>
+					<mat-form-field appearance="outline">
+						<mat-label>kilometers</mat-label>
+						<input matInput type="number" placeholder="kilometers" [(ngModel)]="kilometers"
+							(keyup)="kilometersToOthers()">
+					</mat-form-field>
+				</div>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>miles</mat-label>
+						<input matInput type="number" placeholder="miles" [(ngModel)]="miles"
+							(keyup)="milesToOthers()">
+					</mat-form-field>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</mat-tab>
+	<mat-tab label="Speed converter">
+		<mat-card style="width: 1000px;padding: 0px;">
+			<mat-card-header class="header">
+				<mat-card-title>
+					Speed Converter
+				</mat-card-title>
+			</mat-card-header>
+			<mat-card-content>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>MPH</mat-label>
+						<input matInput type="number" placeholder="MPH" [(ngModel)]="MPH"
+							(keyup)="MPHToOthers()">
+					</mat-form-field>
+					<mat-form-field appearance="outline">
+						<mat-label>KPH</mat-label>
+						<input matInput type="number" placeholder="KPH" [(ngModel)]="KPH"
+							(keyup)="KPHToOthers()">
+					</mat-form-field>
+				</div>
+				<div class="content">
+					<mat-form-field appearance="outline">
+						<mat-label>knots</mat-label>
+						<input matInput type="number" placeholder="knots" [(ngModel)]="knots"
+							(keyup)="knotsToOthers()">
+					</mat-form-field>
+					<mat-form-field appearance="outline">
+						<mat-label>mach</mat-label>
+						<input matInput type="number" placeholder="mach" [(ngModel)]="mach"
+							(keyup)="machToOthers()">
+					</mat-form-field>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</mat-tab>
+</mat-tab-group>

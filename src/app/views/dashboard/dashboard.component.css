@@ -1,0 +1,89 @@
+::ng-deep mat-nav-list{
+  /* max-width: none!important; */
+  /* min-width: 15%!important; */
+  font-family: Loto;
+  font-size: 2vw;
+}
+
+::ng-deep mat-toolbar-row{
+  /* background-color: rgb(223, 207, 241); */
+}
+.main-toolbar {
+  background-color: rgb(223, 207, 241);
+}
+
+::ng-deep .mat-menu-panel {
+  /* max-width: none!important;
+  min-width: 10%!important; */
+  font-family: Loto;
+  font-size: 18px;
+  /* background-color: antiquewhite; */
+  /* margin-left: 350px; */
+  /* margin-top: -50px; */
+}
+mat-list-item {
+  font-size: 18px;
+  font-family: Loto;
+}
+
+.mat-expansion-panel-header {
+  font-size: 18px;
+  font-family: Loto;
+}
+
+.menu-align-style {
+  margin-left: 350px; 
+   margin-top: -50px;
+}
+
+a  {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  border-right: 2px solid gainsboro;
+}
+
+a:hover {
+  opacity: 1;
+}
+
+.stick-main-page {
+  position: sticky;
+  float: right;
+  top: 30%;
+  right: 0px;
+  background-color: blueviolet;
+  padding: 10px 20px;
+}
+
+fieldset {
+    border: 2px solid gainsboro;
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+}
+legend {
+  width: 55%;
+  font-size: 16px;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+      padding: 16px 0px !important;
+}
+
+.themes-styles {
+  font-size: 18px;
+  font-family: Loto;
+}
+
+.theme-radio {
+  font-family: Loto;
+    display: block;
+    font-size: 18px;
+}
+
+.background-color {
+  display: inline-block;
+  height: 4vh;
+  margin: 2px;
+}

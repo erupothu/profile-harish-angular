@@ -1,0 +1,26 @@
+
+.backgroundImage {
+	background-image: url('../../../assets/images/stone_img.jpg');
+}
+
+.sideNavBackgroundImage {
+	background-image: url('../../../assets/images/stone_img2.jpg');
+}
+
+.login-form input {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+mat-icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  height: 55px;
+}

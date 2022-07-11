@@ -1,0 +1,564 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center">
+	<div [fxFlex]="selectedLayoutWidth" fxFlex.xs="100" fxFlex.md="100" fxFlex.sm="100">
+		<mat-toolbar style="width: 100%;max-width: 100%;">
+			<mat-toolbar-row class="main-toolbar">
+				<a mat-button (click)="mainsidenav.toggle()">
+					<mat-icon>menu</mat-icon>
+				</a>
+				<div fxShow.gt-lg fxHide.xs fxHide.sm>
+					<a mat-button>
+						<mat-icon matTooltip="fullscreen" (click)="showFullScreen()">fullscreen</mat-icon>
+					</a>
+					<a mat-button [routerLink]="'/calendar'">
+						<img src="../../../assets/gif/calendar.gif" style="height: 4vh;" matTooltip="calendar">
+					</a>
+					<a mat-button [routerLink]="['/email']">
+						<img src="../../../assets/gif/open-letter.gif" style="height: 4vh;" matTooltip="email">
+					</a>
+					<a mat-button [routerLink]="'/contacts'">
+						<mat-icon matTooltip="contacts">contacts</mat-icon>
+					</a>
+					<a mat-button [routerLink]="'/to-do'">
+						<mat-icon matTooltip="todo">check_box</mat-icon>
+					</a>
+				</div>
+
+				<div style="text-align: center;">
+					<span> <img src="../../../assets/svg/drawingERV3.svg" style="height: 4vh;">
+					</span>
+				</div>
+				<span style="flex: 1 1 auto"></span>
+				<div>
+					<input fxHide.xs placeholder="search" style="outline-style: none;padding: 5px;font-size: 18px;">
+					<a mat-button>
+						<mat-icon>search</mat-icon>
+					</a>
+				</div>
+				<div>
+					<a mat-button [matMenuTriggerFor]="profile">
+						<img mat-card-avatar src="../../../assets/images/people/harish2.jpg" style="height: 4vh;">
+					</a>
+					<mat-menu #profile="matMenu" class="menu-align-style">
+						<button mat-menu-item>
+							<mat-icon>settings</mat-icon> settings
+						</button>
+						<button mat-menu-item>
+							<mat-icon>person</mat-icon> profile
+						</button>
+						<button mat-menu-item>
+							<mat-icon>power_settings_new</mat-icon>Sign out
+						</button>
+					</mat-menu>
+					<a mat-button [matMenuTriggerFor]="language">
+						<img src="../../../assets/icons/india_flag.png">
+					</a>
+					<mat-menu #language="matMenu" class="menu-align-style">
+						<button mat-menu-item><img src="../../../assets/icons/usa_round_icon.png"> USA</button>
+						<button mat-menu-item><img src="../../../assets/icons/great-britain_round_icon.png">
+							Britain</button>
+						<button mat-menu-item><img src="../../../assets/icons/sri_lanka_round_icon.png">Sri
+							Lanka</button>
+					</mat-menu>
+					<a mat-button (click)="sidenavsetting.toggle()">
+						<i class="fa fa-gear fa-spin fa-2x" style="color: white;"></i>
+					</a>
+				</div>
+			</mat-toolbar-row>
+		</mat-toolbar>
+
+		<!-- fxFlexFill -->
+		<mat-sidenav-container style="height:93vh" (backdropClick)="close('backdropClick')">
+			<mat-sidenav [mode]="selectedMode" #mainsidenav [position]="selectedPosition" [opened]="opened"
+				(keydown.escape)="close('escape')" [fixedInViewport]="fixdeSideNav" (mouseenter)="mouseenter()"
+				(mouseleave)="mouseleave()" [style.background-color]="selectedSideNavColor"
+				[style.color]="selectedSideNavClr">
+				<mat-nav-list>
+					<div *ngIf="isExpanded==false">
+						<a mat-button (click)="isExpanded = !isExpanded" style="border-right: 0px;background-color: white;padding: 0px !important;">
+							<!-- {{isExpanded?'shrink':'expand'}} -->
+							<img mat-list-icon src="../../../assets/icons/expand-48.png" height="25" width="30">
+						</a>
+					</div>
+					<div *ngIf="isExpanded==true" >
+						<a mat-button (click)="isExpanded = !isExpanded" style="border-right: 0px;background-color: white;padding: 0px !important;">
+							<!-- {{isExpanded?'shrink':'expand'}} -->
+							<img mat-list-icon src="../../../assets/icons/compress-100.png" height="25" width="30">
+						</a>
+					</div>
+					<div *ngIf="isExpanded || isShowing">
+						<div style="font-family: Loto;font-size: 18px;text-align: center;margin-bottom: 50px;">
+							E Harish <br>
+							<a style="font-family: Loto;font-size: 14px; color: blue;border-right: 0px;"> harish.erupothu@gmail.com </a>
+						</div>
+						<div style="font-family: Loto;font-size: 18px;text-align: center;background-color: grey;">
+							<div style="margin: 1vw;">
+								<img mat-card-avatar src="../../../assets/images/people/harish2.jpg"
+									style="height: 10vh; width: 6vw;margin-top: -50px;">
+							</div>
+							<div>Applications</div>
+						</div>
+					</div>
+					<mat-accordion>
+						<div>
+							<div style="text-align: center;">
+								<mat-icon mat-list-icon *ngIf="!isExpanded  && !isShowing" >dashboard</mat-icon>
+							</div>
+							<mat-expansion-panel mat-line *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>dashboard</mat-icon>
+									<span>Dashboard</span>
+								</mat-expansion-panel-header>
+								<mat-list-item [routerLink]="['/analytics']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">
+									Analytics</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="['/ecommerce']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">
+									eCommerce</mat-list-item>
+								<mat-list-item [routerLink]="['/project']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Project
+								</mat-list-item>
+							</mat-expansion-panel>
+						</div>
+						<div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span>UI Elements</span>
+								</mat-expansion-panel-header>
+								<!-- <mat-list-item  [routerLink]="'/ui/cards'"> Cards
+								</mat-list-item>
+								<mat-divider></mat-divider> -->
+								<!-- <mat-list-item  [routerLink]="'/ui/typography'"> Typography
+								</mat-list-item> -->
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/carousel'" [style.color]="selectedSideNavClr"> Images
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/buttons'" [style.color]="selectedSideNavClr"> Buttons
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/forms'" [style.color]="selectedSideNavClr"> Forms
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/menu'" [style.color]="selectedSideNavClr"> Menu
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/d3-graphs'" [style.color]="selectedSideNavClr"> Maps
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/tables'" [style.color]="selectedSideNavClr"> Tables
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/custom-flex-layout'" [style.color]="selectedSideNavClr"> Flex
+									layouts
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/sample-ide'" [style.color]="selectedSideNavClr"> Sample IDE
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/drag-and-drop'" [style.color]="selectedSideNavClr"> drag and
+									drop
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/charts'" [style.color]="selectedSideNavClr"> Charts
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/filters'" [style.color]="selectedSideNavClr"> Filters
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="'/ui/more'" [style.color]="selectedSideNavClr"> More
+								</mat-list-item>
+								<mat-divider></mat-divider>
+							</mat-expansion-panel>
+						</div>
+						<div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span>Wesites</span>
+								</mat-expansion-panel-header>
+								<mat-list-item [routerLink]="['/websites/sample-website']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Sample Website</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="['/websites/sample-blog']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Sample blog</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="['/websites/blog-profile']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Blog profile</mat-list-item>
+								<mat-divider></mat-divider>
+								<!-- <mat-list-item  [routerLink]="['/websites/sample-website']"
+									routerLinkActive="router-link-active">Data Converter</mat-list-item>
+								<mat-divider></mat-divider> -->
+							</mat-expansion-panel>
+						</div>
+						<div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span>Converters</span>
+								</mat-expansion-panel-header>
+								<mat-list-item [routerLink]="['/converters/simple-converter']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Sample converter</mat-list-item>
+								<mat-divider></mat-divider>
+								<!-- <mat-list-item  [routerLink]="['/converters/image-converter']"
+									routerLinkActive="router-link-active">Image converter</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item  [routerLink]="['/converters/data-converter']"
+									routerLinkActive="router-link-active">Data Converter</mat-list-item>
+								<mat-divider></mat-divider> -->
+							</mat-expansion-panel>
+						</div>
+						<div fxHide.xs>
+							<div style="text-align: center;">
+								<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing" [style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span mat-line>Admin (IAM)</span>
+								</mat-expansion-panel-header>
+								<mat-list-item  [routerLink]="['/admin/admin-home']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">home</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item  [routerLink]="['/admin/admin-contact-us']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">contact us</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item  [routerLink]="['/admin/admin-documentation']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Documentation</mat-list-item>
+								<mat-divider></mat-divider>
+							</mat-expansion-panel>
+						</div>
+						
+						<div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span mat-line>Authentication</span>
+								</mat-expansion-panel-header>
+								<mat-list-item (click)="authService.openNav(); authService.clickStatus='login'"
+									[routerLink]="['/authentication']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Login
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item (click)="authService.openNav(); authService.clickStatus='register'"
+									[routerLink]="['/authentication']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Register
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item (click)="authService.openNav(); authService.clickStatus='forgot'"
+									[routerLink]="['/authentication']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Forgot
+									password
+								</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item (click)="authService.openNav(); authService.clickStatus='reset_password'"
+									[routerLink]="['/authentication']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Reset
+									Password
+								</mat-list-item>
+								<mat-divider></mat-divider>
+							</mat-expansion-panel>
+						</div>
+						<div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span>Pricing</span>
+								</mat-expansion-panel-header>
+								<mat-list-item [routerLink]="['/pages/pricing']" routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">
+									Price Style 1</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="['/pages/pricing',2]"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Price Style 2</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="['/pages/pricing', 3]"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Price Style 3</mat-list-item>
+								<mat-divider></mat-divider>
+							</mat-expansion-panel>
+						</div>
+						<div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span mat-line>Tutorial</span>
+								</mat-expansion-panel-header>
+								<mat-list-item [routerLink]="['/tutorial/courses']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Courses</mat-list-item>
+								<mat-divider></mat-divider>
+							</mat-expansion-panel>
+						</div>
+						<div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span mat-line>Products</span>
+								</mat-expansion-panel-header>
+								<mat-list-item [routerLink]="['/e-cart/products']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Products</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item [routerLink]="['/e-cart/product-details']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Product Details</mat-list-item>
+								<mat-divider></mat-divider>
+								<!-- <mat-list-item  [routerLink]="['/e-cart/orders']"
+									routerLinkActive="router-link-active">Orders</mat-list-item>
+								<mat-divider></mat-divider>
+								<mat-list-item  [routerLink]="['/e-cart/order-details']"
+									routerLinkActive="router-link-active">Order Details</mat-list-item>
+								<mat-divider></mat-divider> -->
+							</mat-expansion-panel>
+						</div>
+						
+						<!-- <div>
+							<div style="text-align: center;">
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							</div>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing"
+								[style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span>Editor</span>
+								</mat-expansion-panel-header>
+								<mat-list-item [routerLink]="['/editor/custom-editor']"
+									routerLinkActive="router-link-active" [style.color]="selectedSideNavClr">Custom Editor
+								</mat-list-item>
+								<mat-divider></mat-divider>
+							</mat-expansion-panel>
+						</div> -->
+						<!-- <div>
+							<mat-icon mat-list-icon *ngIf="!isExpanded && !isShowing">person</mat-icon>
+							<mat-expansion-panel *ngIf="isExpanded || isShowing" [style.background-color]="selectedSideNavColor" [style.color]="selectedSideNavClr">
+								<mat-expansion-panel-header>
+									<mat-icon mat-list-icon>person</mat-icon>
+									<span>Invoice</span>
+								</mat-expansion-panel-header>
+								<button mat-menu-item [routerLink]="['/paid-tutorials']"
+									[matMenuTriggerFor]="invoice">Invoice
+								</button>
+								<button mat-menu-item 
+									[routerLink]="['/paid-tutorials']">Invoice
+									Add</button>
+								<button mat-menu-item 
+									[routerLink]="['/paid-tutorials']">Invoice
+									Edit</button>
+								<button mat-menu-item 
+									[routerLink]="['/paid-tutorials']">Invoice
+									List</button>
+								<mat-menu #invoice="matMenu" class="menu-align-style">
+									<button mat-menu-item [matMenuTriggerFor]="invoice2">Invoice add</button>
+									<button mat-menu-item>Invoice Edit</button>
+									<button mat-menu-item>Invoice List</button>
+								</mat-menu>
+								<mat-menu #invoice2="matMenu">
+									<button mat-menu-item>Invoice add</button>
+									<button mat-menu-item>Invoice Edit</button>
+									<button mat-menu-item>Invoice List</button>
+								</mat-menu>
+							</mat-expansion-panel>
+						</div> -->
+					</mat-accordion>
+					<mat-divider></mat-divider>
+					<mat-list-item [routerLink]="'/editor/custom-editor'" [style.color]="selectedSideNavClr">
+						<mat-icon mat-list-icon>assessment</mat-icon>
+						<span mat-line *ngIf="isExpanded || isShowing">Custom Editor</span>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					<mat-list-item [routerLink]="'/scrumboard'" [style.color]="selectedSideNavClr">
+						<mat-icon mat-list-icon>assessment</mat-icon>
+						<span mat-line *ngIf="isExpanded || isShowing">Scrumboard</span>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					<mat-list-item [routerLink]="['/email/inbox']" routerLinkActive="router-link-active"
+						[style.color]="selectedSideNavClr">
+						<img mat-list-icon src="../../../assets/gif/open-letter.gif" height="25" width="30">
+						<span mat-line *ngIf="isExpanded || isShowing">Email</span>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					<mat-list-item [routerLink]="'/calendar'" [style.color]="selectedSideNavClr">
+						<img mat-list-icon src="../../../assets/gif/calendar.gif">
+						<span mat-line *ngIf="isExpanded || isShowing">Calendar</span>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					<mat-list-item [routerLink]="'/contacts'" [style.color]="selectedSideNavClr">
+						<mat-icon mat-list-icon>contacts</mat-icon>
+						<span mat-line *ngIf="isExpanded || isShowing">Contacts</span>
+					</mat-list-item>
+					<mat-list-item [routerLink]="'/pages/profile'" [style.color]="selectedSideNavClr">
+						<span mat-line *ngIf="isExpanded || isShowing">Profile</span> </mat-list-item>
+					<mat-divider></mat-divider>
+					<!-- <mat-list-item  [routerLink]="'/java-ide'" [style.color]="selectedSideNavClr">
+						<mat-icon mat-list-icon>edit</mat-icon>
+						<span mat-line *ngIf="isExpanded || isShowing">Java IDE</span>
+					</mat-list-item> -->
+					<!-- <mat-list-item  [routerLink]="'/chat'" [style.color]="selectedSideNavClr">
+						<img mat-list-icon src="../../../assets/gif/chat.gif" height="25" width="30">
+						<span mat-line *ngIf="isExpanded || isShowing">Chat</span>
+					</mat-list-item>
+					<mat-divider></mat-divider> -->
+					<mat-list-item [routerLink]="'/to-do'" [style.color]="selectedSideNavClr">
+						<mat-icon mat-list-icon>todo</mat-icon>
+						<span mat-line *ngIf="isExpanded || isShowing">Todo</span>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					
+					<mat-list-item [routerLink]="'/pages/faq'" [style.color]="selectedSideNavClr">
+						<span mat-line *ngIf="isExpanded || isShowing">FAQ</span> </mat-list-item>
+					<mat-divider></mat-divider>
+					<mat-list-item [routerLink]="'/documentation'" [style.color]="selectedSideNavClr">
+						<span mat-line *ngIf="isExpanded || isShowing">Documentation</span> </mat-list-item>
+					<mat-divider></mat-divider>
+					<!-- <mat-list-item  [routerLink]="'/create-activity'" [style.color]="selectedSideNavClr"> 
+						<span mat-line *ngIf="isExpanded || isShowing">File Manager</span>
+					</mat-list-item> -->
+				</mat-nav-list>
+			</mat-sidenav>
+			<mat-sidenav-content>
+				<div fxLayout="row wrap" fxlayout.xs="collumn">
+					<div fxFlex="100" fxFlexFill.xs>
+						<!-- <a mat-button class="stick-main-page" (click)="sidenavsetting.toggle()">
+							<i class="fa fa-gear fa-spin fa-2x" style="color: white;"></i>
+						</a> -->
+						<mat-sidenav mode="side" #sidenavsetting position="end" role="navigation" fullscreen
+							fixedInViewport="true" style="width: 300px; background-color: burlywood;">
+							<div>
+								<h4 style="float: left; padding: 20px;">Theme Options</h4>
+								<span style="float: right; padding: 20px;cursor: pointer;"> <a
+										(click)="sidenavsetting.toggle()">
+										<mat-icon>close</mat-icon>
+									</a> </span>
+							</div>
+							<div style="display: block; width: 200px;">
+								<fieldset>
+									<legend> Color Themes </legend>
+									<mat-radio-group [(ngModel)]="selectedTheme"
+										(ngModelChange)="onSetTheme(selectedTheme)">
+										<mat-radio-button *ngFor="let item of themes" [value]="item"
+											class="theme-radio">
+											{{item}}
+										</mat-radio-button>
+									</mat-radio-group>
+								</fieldset>
+							</div>
+							<div style="display: block; width: 200px;">
+								<fieldset>
+									<legend> Layouts </legend>
+									<mat-radio-group [(ngModel)]="selectedLayoutWidth">
+										<mat-radio-button value="100" class="theme-radio">
+											Layout#1
+										</mat-radio-button>
+										<mat-radio-button value="60" class="theme-radio">
+											Layout#2
+										</mat-radio-button>
+										<mat-radio-button value="60" class="theme-radio">
+											Layout#3
+										</mat-radio-button>
+									</mat-radio-group>
+									<div>
+										<fieldset style="width: 200px;">
+											<legend> Layouts Width </legend>
+											<mat-radio-group [(ngModel)]="selectedLayoutWidth">
+												<mat-radio-button value="100" class="theme-radio">
+													Full Width
+												</mat-radio-button>
+												<mat-radio-button value="60" class="theme-radio">
+													Boxed Width
+												</mat-radio-button>
+											</mat-radio-group>
+										</fieldset>
+									</div>
+									<div>
+										<fieldset style="width: 200px;">
+											<legend> Navbar Modes</legend>
+											<mat-radio-group [(ngModel)]="selectedMode"
+												(ngModelChange)="mainsidenav.open()">
+												<mat-radio-button *ngFor="let item of sideNavModes" [value]="item"
+													class="theme-radio">
+													{{item}}
+												</mat-radio-button>
+											</mat-radio-group>
+											<mat-checkbox [(ngModel)]="fixdeSideNav"> Fixed {{fixdeSideNav}}
+											</mat-checkbox>
+										</fieldset>
+									</div>
+									<div>
+										<fieldset style="width: 200px;">
+											<legend> Navbar Positions</legend>
+											<mat-radio-group [(ngModel)]="selectedPosition">
+												<mat-radio-button *ngFor="let item of sideNavPosition" [value]="item"
+													class="theme-radio">
+													{{item}}
+												</mat-radio-button>
+											</mat-radio-group>
+										</fieldset>
+									</div>
+									<div>
+										<fieldset style="width: 200px;">
+											<legend> Navbar Actions</legend>
+											<mat-radio-group [(ngModel)]="selectedNavAction"
+												(ngModelChange)="selectedNavAction=='open'?mainsidenav.open():mainsidenav.close()">
+												<mat-radio-button value="open" class="theme-radio">
+													open
+												</mat-radio-button>
+												<mat-radio-button value="close" class="theme-radio">
+													close
+												</mat-radio-button>
+											</mat-radio-group>
+											<div *ngIf="selectedNavAction=='open'">
+												Shrink
+												<mat-slide-toggle [checked]="isExpanded"
+													(change)="onToggleChange($event)">
+													Expand
+												</mat-slide-toggle>
+											</div>
+										</fieldset>
+									</div>
+									<div>
+										<fieldset style="width: 200px;">
+											<legend> Navbar BgCollor</legend>
+											<div>
+												<button mat-button [mat-menu-trigger-for]="colors">
+													<mat-icon style="color: blue;">palette</mat-icon>
+												</button>
+												<mat-menu #colors="matMenu">
+													<div *ngFor="let item of menuWithSelectColor"
+														class="background-color" [style.background-color]="item.name">
+														<button mat-menu-item
+															(click)="stopPropagationColor($event, item)">{{item.name}}</button>
+													</div>
+												</mat-menu>
+											</div>
+										</fieldset>
+									</div>
+								</fieldset>
+							</div>
+						</mat-sidenav>
+						<router-outlet></router-outlet>
+					</div>
+				</div>
+			</mat-sidenav-content>
+
+		</mat-sidenav-container>
+	</div>
+</div>

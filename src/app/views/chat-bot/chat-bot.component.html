@@ -1,0 +1,22 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="100">
+		<div>
+			<div >
+				<ng-container *ngFor="let message of messages">
+					<div class="message"
+						[ngClass]="{ 'from': message.author === 'bot','to': message.author === 'user' }">
+						{{ message.content }}
+					</div>
+				</ng-container>
+			</div>
+
+			<div style="position: sticky; bottom: 2px;display: block;text-align: center; background-color: white;">
+				<input [(ngModel)]="value" (keyup.enter)="sendMessage()" placeholder="Text Here" autocomplete="false"
+					style="outline-style: none;border: 1px solid blue;padding: 10px; margin: 5px;">
+				<button mat-flat-button (click)="sendMessage()" style="display: inline-block; background-color: blue;">
+					<mat-icon>send</mat-icon>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

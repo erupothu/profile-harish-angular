@@ -1,0 +1,60 @@
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="1%">
+	<div fxFlex="49">
+		<mat-card>
+			<mat-card-content>
+				<mat-form-field appearance="outline">
+					<mat-label>Title</mat-label>
+					<input matInput [(ngModel)]="title" placeholder="title here">
+				</mat-form-field>
+				<h2>Page</h2>
+				<mat-card style="height: 100%;">
+					<mat-card-header style="background-color: gainsboro;">
+						<mat-card-title>Slide</mat-card-title>
+						<span style="flex: 1 1 auto"></span>
+						<button mat-flat-button [matMenuTriggerFor]="menu" style="background-color: gainsboro;">
+							<mat-icon> settings </mat-icon>
+						</button>
+						<mat-menu #menu="matMenu">
+							<button mat-menu-item (click)="addSlide()">
+								<mat-icon>add</mat-icon>add slide
+							</button>
+							<button mat-menu-item>
+								<mat-icon>remove</mat-icon>delete slide
+							</button>
+							<button mat-menu-item>
+								<mat-icon>remove</mat-icon>extra
+							</button>
+						</mat-menu>
+					</mat-card-header>
+					<mat-divider></mat-divider>
+					<div style="background-color: ghostwhite;" *ngFor="let slide of pageData">
+						<mat-card-content style="height: 100%;">
+							<mat-form-field appearance="outline">
+								<mat-label>Slide name</mat-label>
+								<input matInput [(ngModel)]="slide.slideName" placeholder="title here">
+							</mat-form-field>
+							<mat-card-title> slide description </mat-card-title>
+							<!-- <ckeditor [(ngModel)]="slide.slideDescription" [editor]="Editor" [config]="ckConfig" style="font-size: 20px;font-family: auto"></ckeditor> -->
+							
+							<button mat-flat-button><mat-icon>add</mat-icon> extra </button>
+						</mat-card-content>
+					</div>
+				</mat-card>
+			</mat-card-content>
+		</mat-card>
+	</div>
+	<div fxFlex="49">
+		<mat-card>
+			<mat-card-content>
+				<app-admin-toolbar></app-admin-toolbar>
+				<h2>Page</h2>
+				<div *ngFor="let slide of pageData" style="background-color: burlywood">
+					<div [innerHTML]="slide.slideDescription" style="font-size: 24px; font-family: Cambria;"></div>
+				</div>
+				<app-admin-footer></app-admin-footer>
+			</mat-card-content>
+		</mat-card>
+	</div>
+
+	<div id="editor"></div>
+</div>
