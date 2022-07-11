@@ -1,0 +1,33 @@
+<div fxLayout="row wrap" fxLayout.xs="column">
+	<div fxFlex="100" fxFlex.xs="100">
+		<div class="parent">
+			<div class="header">
+				<div style="font-size: 30px;">My Blog</div>
+				<div style="font-size: 14px;">A Responsive Blog created by me</div>
+			</div>
+			<div class="toolbar" fxLayout.xs="column" fxFlex.xs="100">
+				<a>Home</a>
+				<a>My Contacts</a>
+				<a>Career</a>
+			</div>
+			<div class="main" *ngFor="let item of categoryList; let i=index">
+				<div>
+					<span style="font-size: 20px;font-family: Loto;">{{item.name}}</span>
+					<span style="float: right;"> <button mat-button (click)="createTopic(item)"> Create Topics</button>
+					</span>
+				</div>
+				<span> Topics </span>
+				<div *ngFor="let topic of item.topicList; let i=index" >
+					<div class="sub-main">
+						<div (click)="viewTopic(item, topic)">
+							{{ topic.name }}
+							<p [innerHtml]="topic.content | readmore:30:showAll"></p>
+						</div>
+						<!-- <button mat-button (click)="triggerReadMore()" *ngIf="!showAll">Read More</button>
+						<button mat-button (click)="triggerReadLess()" *ngIf="showAll">Read Less</button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

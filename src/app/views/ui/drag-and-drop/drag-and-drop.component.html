@@ -1,0 +1,268 @@
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxFlex="50">
+    <div>
+      <mat-card>
+        <mat-card-content>
+          <div cdkDropList class="example-list" (cdkDropListDropped)="homePageDrag($event)"
+            style="width: 100%; padding: 0px;">
+            <div class="example-box" *ngFor="let home of homePage; let i=index" cdkDrag style="padding: 0px !important">
+              <div *ngIf="home.id==1">
+                <div>
+                  video carousel
+                  <button mat-flat-button (click)="addVideoCarouselSlide()">Add video slide</button>
+                </div>
+                <div cdkDropList class="example-list" (cdkDropListDropped)="videoCarouselsDrag($event)">
+                  <div class="example-box" *ngFor="let carousel of video_carousels" cdkDrag
+                    style="padding: 0px !important">
+                    <mat-accordion style="width: 100%;">
+                      <mat-expansion-panel hideToggle [disabled]="true" #mep="matExpansionPanel">
+                        <mat-expansion-panel-header (dblclick)="mep.expanded = !mep.expanded">
+                          <mat-panel-title>
+                            slide
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Carousel
+                          </mat-panel-description>
+                          <div>
+                            <button mat-raised-button>
+                              <mat-icon>settings</mat-icon>
+                            </button>
+                            <button mat-raised-button>
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                            <mat-slide-toggle>Slide me!</mat-slide-toggle>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div style="border: 1px solid gray; padding: 20px;">
+                          <div>
+                            image
+                            <img [src]="carousel.imageUrl">
+                            <button mat-raised-button>add from asset</button>
+                          </div>
+                          <div>
+                            video
+                            <input placeholder="Enter url link" [(ngModel)]="carousel.videoUrl">
+                          </div>
+                          <div>
+                            Video title
+                            <input placeholder="Enter title" [(ngModel)]="carousel.title">
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="home.id==2">
+                <div>
+                  image carousel
+                  <button mat-raised-button (click)="addImageCarouselSlide()">Add image slide</button>
+                </div>
+                <div cdkDropList class="example-list" (cdkDropListDropped)="imageCarouselsDrag($event)">
+                  <div class="example-box" *ngFor="let carousel of image_carousels" cdkDrag style="padding: 0px;">
+                    <mat-accordion style="width: 100%;">
+                      <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            slide
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Carousel
+                          </mat-panel-description>
+                          <div>
+                            <mat-icon>account_circle</mat-icon>
+                            <mat-icon>map</mat-icon>
+                            <mat-icon>date_range</mat-icon>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div>
+                          image
+                          <img [src]="carousel.imageUrl">
+                          <button mat-flat-button>add from asset</button>
+                        </div>
+                        <div>
+                          video
+                          <input placeholder="Enter url link" [(ngModel)]="carousel.videoUrl">
+                        </div>
+                        <div>
+                          Video title
+                          <input placeholder="Enter title" [(ngModel)]="carousel.title">
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="home.id==3">
+                <div>
+                  mutli column text
+                  <button mat-raised-button (click)="addMultiColumnText()">Add text Column</button>
+                </div>
+                <div cdkDropList class="example-list" (cdkDropListDropped)="multiColumnTextDrag($event)">
+                  <div class="example-box" *ngFor="let item of multiColumnText" cdkDrag style="padding: 0px;">
+                    <mat-accordion style="width: 100%;">
+                      <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            slide
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Carousel
+                          </mat-panel-description>
+                          <div>
+                            <mat-icon>account_circle</mat-icon>
+                            <mat-icon>map</mat-icon>
+                            <mat-icon>date_range</mat-icon>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div>
+                          <input placeholder="background color" [(ngModel)]="item.background_color">
+                        </div>
+                        <div>
+                          headline
+                          <input placeholder="Enter url link" [(ngModel)]="item.headline">
+                        </div>
+                        <div>
+                          text
+                          <textarea placeholder="Enter title" [(ngModel)]="item.text"></textarea>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="home.id==4">
+                <div>
+                  mutli Logo Section
+                  <button mat-raised-button (click)="addlogoSection()">Add Logo</button>
+                </div>
+                <div cdkDropList class="example-list" (cdkDropListDropped)="logoSectionDrag($event)">
+                  <div class="example-box" *ngFor="let item of logoSections" cdkDrag style="padding: 0px;">
+                    <mat-accordion style="width: 100%;">
+                      <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            slide
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Logo
+                          </mat-panel-description>
+                          <div>
+                            <mat-icon>account_circle</mat-icon>
+                            <mat-icon>map</mat-icon>
+                            <mat-icon>date_range</mat-icon>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div>
+                          Logo
+                          <img [src]="item.logoUrl">
+                          <button mat-flat-button>add from asset</button>
+                        </div>
+                        <div>
+                          link
+                          <input placeholder="Enter url link" [(ngModel)]="item.link">
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="home.id==5">
+                <div>
+                  Testimonial
+                  <button mat-raised-button (click)="addTestimonials()">Add testimonial</button>
+                </div>
+                <div cdkDropList class="example-list" (cdkDropListDropped)="testimonialDrag($event)">
+                  <div class="example-box" *ngFor="let item of testimonials" cdkDrag style="padding: 0px;">
+                    <mat-accordion style="width: 100%;">
+                      <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            slide
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Testimonial
+                          </mat-panel-description>
+                          <div>
+                            <mat-icon>account_circle</mat-icon>
+                            <mat-icon>map</mat-icon>
+                            <mat-icon>date_range</mat-icon>
+                          </div>
+                        </mat-expansion-panel-header>
+                        <div>
+                          image
+                          <img [src]="item.imageUrl">
+                          <button mat-flat-button>add from asset</button>
+                        </div>
+                        <div>
+                          Text
+                          <textarea placeholder="Enter url link" [(ngModel)]="item.text"></textarea>
+                        </div>
+                        <div>
+                          Attribution
+                          <textarea placeholder="Enter title" [(ngModel)]="item.attribution"></textarea>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div fxFlex="50">
+    hello
+    <div *ngFor="let items of homePage">
+      <div *ngFor="let item of items.object">
+        <div *ngIf="item.name=='video_carousel'">
+          <div class="column">
+            <iframe width="800" height="600" [src]="item.videoUrl | safe"></iframe>
+            <div>
+              {{item.title}}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.name=='image_carousel'">
+          {{item.name}}
+        </div>
+        <div *ngIf="item.name=='mutli_column_text'">
+          <div class="column"
+            [ngStyle]="{'width': 100/items.object.length+'%', 'background-color': item.background_color}">
+            <h4>{{item.headline}}</h4>
+            <div>
+              {{item.text}}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.name=='logo_Section'">
+          <div class="column"
+            [ngStyle]="{'width': 100/items.object.length+'%', 'background-color': item.background_color}">
+            <div>
+              <a [href]="item.link" target="_blank"><img [src]="item.logoUrl" height="100" width="100"></a>
+            </div>
+            <div>
+              {{item.link}}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="item.name=='testimonial'">
+          <div class="column"
+            [ngStyle]="{'width': 100/items.object.length+'%', 'background-color': item.background_color}">
+            <div>
+              <img [src]="item.imageUrl" height="100" width="100">
+            </div>
+            <div>
+              {{item.text}}
+            </div>
+            <div>
+              {{item.attribution}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

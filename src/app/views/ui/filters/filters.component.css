@@ -1,0 +1,78 @@
+:host ::ng-deep .mat-tab-group {
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-tab-header {
+  border-bottom: none;
+}
+
+:host ::ng-deep .mat-tab-header-pagination {
+  display: none !important;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  flex-direction: column;
+}
+
+:host ::ng-deep .mat-ink-bar {
+  height: 100%;
+  left: 98% !important;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  flex: 1 1 auto;
+}
+
+.filter-list-input {
+	width: 80%;
+}
+.filter-list-input input {
+	background-image: url('../../../../assets/icons/search_icon_50.png');
+	background-repeat: no-repeat;
+	border: 2px solid gray;
+	padding-left: 60px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-position: 10px;
+	font-size: 20px;
+	margin-left: 20px;
+	border-color: blue;
+}
+
+mat-card {
+	margin: 5px;
+}
+
+.card-items {
+	width: 100px;height: 100px;background-color: gainsboro;color: white;float: left;
+}
+
+.dropdn-search button {
+	padding: 12px 20px;
+	margin: 3px;
+	color: white;
+	background-color: green;
+	font-size: 16px;
+	outline: none;
+}
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+	padding: 0px 5px !important;
+}
+.drpdn-list {
+	display: none;
+}
+
+.drpdn-list-active {
+	border: 1px solid grey;
+}
+.drpdn-list-active input{
+	border: 1px solid grey;
+	padding-left: 15px;
+	font-size: 16px;
+	color: grey;
+	background-color: white;
+}
+.drpdn-list-active mat-list-item:hover {
+	background-color: aliceblue;
+}

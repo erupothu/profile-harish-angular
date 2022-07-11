@@ -1,0 +1,270 @@
+<div fxLayout="row wrap" fxLayout.xs="column">
+	<div fxFlex="100" fxFlex.xs="100">
+		<mat-tab-group>
+			<mat-tab label="carousel">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div fxFlex="90" fxFlex.xs="100">
+						<div style="margin: 20px;">
+							<button mat-raised-button (click)="navigateToSlide('four')">Go to Slide Four</button>
+							<button mat-raised-button (click)="getToPrev()">Prev</button>
+							<button mat-raised-button (click)="goToNext()">Next</button>
+							<button mat-raised-button (click)="stopCarousel()">Pause</button>
+							<button mat-raised-button (click)="restartCarousel()">Restart</button>
+							<button mat-raised-button
+								(click)="showNavigationIndicators = !showNavigationIndicators">TggoleNavigation
+								Idicator</button>
+							<button mat-raised-button (click)="showNavigationArrows = !showNavigationArrows">Toggle navigation
+								arrow</button>
+						</div>
+					</div>
+					<div class="images-card" style="margin: 20px;">
+						<div>
+								<ngb-carousel class="carousel" #ngcarousel [showNavigationArrows]="showNavigationArrows"
+									[showNavigationIndicators]="showNavigationIndicators" [interval]="interval"
+									[keyboard]="keyboard" [pauseOnHover]="pauseOnHover" [wrap]="wrap"
+									[activeId]="'secondSlide'" style="width:100%; margin: 0px;height: 400px;">
+									<ng-template ngbSlide id="one">
+										<div class="picsum-img-wrapper">
+											<img src="../../../../assets/images/people/male_photo1.jpeg"
+												alt="Angular Carousel 1">
+										</div>
+										<div class="carousel-caption">
+											<h3>Title Goes Here</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+										</div>
+									</ng-template>
+									<ng-template ngbSlide id="two">
+										<div class="picsum-img-wrapper">
+											<img src="../../../../assets/images/people/male_photo2.jpeg"
+												alt="Angular Carousel 2">
+										</div>
+										<div class="carousel-caption">
+											<h3>Title Goes Here</h3>
+											<p>Consectetur tortor volutpat pretium.</p>
+										</div>
+									</ng-template>
+									<ng-template ngbSlide id="three">
+										<div class="picsum-img-wrapper">
+											<img src="../../../../assets/images/people/male_photo3.jpeg"
+												alt="Angular Carousel 2">
+										</div>
+										<div class="carousel-caption">
+											<h3>Title Goes Here</h3>
+											<p>Consectetur tortor volutpat pretium.</p>
+										</div>
+									</ng-template>
+									<ng-template ngbSlide id="four">
+										<div class="picsum-img-wrapper">
+											<img src="../../../../assets/images/people/female_photo.jpeg"
+												alt="Angular Carousel 2">
+										</div>
+										<div class="carousel-caption">
+											<h3>Title Goes Here</h3>
+											<p>Consectetur tortor volutpat pretium.</p>
+										</div>
+									</ng-template>
+									<ng-template ngbSlide id="five">
+										<div class="picsum-img-wrapper">
+											<img src="../../../../assets/images/people/felamle_photo2.jpeg"
+												alt="Angular Carousel 2">
+										</div>
+										<div class="carousel-caption">
+											<h3>Title Goes Here</h3>
+											<p>Consectetur tortor volutpat pretium.</p>
+										</div>
+									</ng-template>
+									<ng-template ngbSlide id="six">
+										<div class="picsum-img-wrapper">
+											<img src="../../../../assets/images/people/female_photo3.jpeg"
+												alt="Angular Carousel 2">
+										</div>
+										<div class="carousel-caption">
+											<h3>Title Goes Here</h3>
+											<p>Consectetur tortor volutpat pretium.</p>
+										</div>
+									</ng-template>
+								</ngb-carousel>
+						</div>
+					</div>
+					<div fxFlex="80" fxFlex.xs="100">
+						<div>
+							<mat-card style="margin: 20px;">
+								<div class="margin-auto demo-div box-shadow" [ngStyle]="{'width':'100%'}">
+									<ng-image-slider *ngIf="showSlider" #nav [images]="imageObject"
+										[infinite]="sliderInfinite" [imagePopup]="sliderImagePopup"
+										[showArrow]="sliderArrowShow" [autoSlide]="sliderAutoSlide"
+										[slideImage]="sliderSlideImage" [animationSpeed]="sliderAnimationSpeed"
+										[manageImageRatio]="false" (imageClick)="imageOnClick($event)"
+										[imageSize]="imageSize" (arrowClick)="arrowOnClick($event)"
+										(lightboxArrowClick)="lightboxArrowClick($event)"></ng-image-slider>
+								</div>
+							</mat-card>
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="Image Hover">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						<img src="../../../../assets/images/people/harish1.jpg" style="width:100%; margin: 0px;">
+						<div class="fadetext-overlay">
+							<div class="overlay-text">
+								Upload image
+							</div>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						<img src="../../../../assets/images/people/harish1.jpg" style="width:100%;margin: 0px;">
+						<div class="fadebutton-overlay">
+							<div class="overlay-text">
+								<button mat-button style="background-color: blue;">add</button>
+							</div>
+						</div>
+					</div>
+					<div fxFlex="30" fxFlex.xs="100">
+						<div class="images-card" (mouseenter)="mouseenterSlideText()"
+							(mouseleave)="mouseleavelideText()">
+							<img src="../../../../assets/images/people/harish1.jpg" style="width:100%;margin: 0px;">
+							<div [ngClass]="selectedSlideClass" #slidetext>
+								<div class="overlay-text">
+									Upload image
+								</div>
+							</div>
+							<div style="text-align: center;padding: 20px;">
+								<button mat-button (click)="selectSlideType('top')">top</button>
+								<button mat-button (click)="selectSlideType('bottom')">bottom</button>
+								<button mat-button (click)="selectSlideType('left')">left</button>
+								<button mat-button (click)="selectSlideType('right')">right</button>
+							</div>
+						</div>
+					</div>
+					<div fxFlex="30" fxFlex.xs="100">
+						<div class="images-card" #flipImage (mouseenter)="flipInAxis()" (mouseleave)="flipOutAxis()">
+							<img src="../../../../assets/images/people/harish1.jpg" style="width:100%;margin: 0px;">
+							<div style="text-align: center;padding: 20px;">
+								<button mat-button (click)="selectFlipType('xaxis')">X axis</button>
+								<button mat-button (click)="selectFlipType('yaxis')">Y axis</button>
+							</div>
+						</div>
+					</div>
+					<div fxFlex="30" fxFlex.xs="100">
+						<mat-card style="height: 50vh;">
+							<mat-card-header>
+								<mat-card-title>Zoom on Hover</mat-card-title>
+							</mat-card-header>
+							<mat-card-content>
+								<div class="zoom"></div>
+							</mat-card-content>
+						</mat-card>
+					</div>
+					<div fxFlex="30" fxFlex.xs="100">
+						<mat-card style="height: 70vh;">
+							<mat-card-header>
+								<mat-card-title>card Flip</mat-card-title>
+							</mat-card-header>
+							<div class="flip-card">
+								<div class="flip-card-inner">
+									<div class="flip-card-front">
+										<img src="../../../../assets/images/people/male_photo1.jpeg" alt="Avatar"
+											style="width:300px;height:300px;">
+									</div>
+									<div class="flip-card-back">
+										<h1>John Doe</h1>
+										<p>Architect & Engineer</p>
+										<p>We love that guy</p>
+									</div>
+								</div>
+							</div>
+						</mat-card>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="images">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div class="images-card" fxFlex="25" fxFlex.xs="100">
+						<img src="../../../../assets/images/nature/nature1.jpeg" style="width:100%; margin: 0px;">
+						<div style="text-align: center;padding: 20px;">
+							Normal Image
+						</div>
+					</div>
+					<div class="images-card" fxFlex="25" fxFlex.xs="100">
+						<img src="../../../../assets/images/nature/nature1.jpeg"
+							style="width:100%; margin: 0px;border-radius: 10px;">
+						<div style="text-align: center;padding: 20px;">
+							Round Image
+						</div>
+					</div>
+					<div class="images-card" fxFlex="25" fxFlex.xs="100">
+						<img src="../../../../assets/images/nature/nature1.jpeg"
+							style="width:100%; margin: 0px;border-radius: 4px;padding: 10px;border: 2px solid blue;">
+						<div style="text-align: center;padding: 20px;">
+							Border Image
+						</div>
+					</div>
+					<div class="images-card" fxFlex="25" fxFlex.xs="100">
+						<img src="../../../../assets/images/nature/nature1.jpeg"
+							style="width:100%; margin: 0px;border-radius: 50%;">
+						<div style="text-align: center;padding: 20px;">
+							Circle Image
+						</div>
+					</div>
+					<div class="images-card" fxFlex="25" fxFlex.xs="100">
+						<div>
+							<button mat-raised-button (click)="topLeft = !topLeft">TopLeft Toggle</button>
+							<button mat-raised-button (click)="topRight = !topRight">topRight Toggle</button>
+							<button mat-raised-button (click)="bottomLeft = !bottomLeft">bottomLeft Toggle</button>
+							<button mat-raised-button (click)="bottomRight = !bottomRight">bottomRight Toggle</button>
+							<button mat-raised-button (click)="textCenter = !textCenter">textCenter Toggle</button>
+						</div>
+						<div class="image-txt">
+							<img src="../../../../assets/images/nature/nature1.jpeg" style="width:100%; margin: 0px;">
+							<span [ngClass]="topLeft?'top-left':'hide'">Harish Left</span>
+							<span [ngClass]="topRight?'top-right':'hide'">Harish Right</span>
+							<span [ngClass]="bottomLeft?'bottom-left':'hide'">Harish Top</span>
+							<span [ngClass]="bottomRight?'bottom-right':'hide'">Harish Bottom</span>
+							<span [ngClass]="textCenter?'text-center':'hide'">Harish Center</span>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="25" fxFlex.xs="100">
+						<img src="../../../../assets/images/nature/nature1.jpeg"
+							style="width:100%; margin: 0px;opacity: 0.5;">
+						<div style="text-align: center;padding: 20px;">
+							Transparent Image
+						</div>
+					</div>
+					<div class="images-card" fxFlex="25" fxFlex.xs="100">
+						<mat-card style="height: 50vh;">
+							<mat-card-header>
+								<mat-card-title>CutOut Text on Image</mat-card-title>
+							</mat-card-header>
+							<mat-card-content>
+								<div class="image-container">
+									<div class="text">NATURE</div>
+								</div>
+							</mat-card-content>
+						</mat-card>
+					</div>
+				</div>
+			</mat-tab>
+
+			<mat-tab label="responsive image">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div fxFlex="100" fxFlex.xs="100">
+						<div class="images">
+							<img src="../../../../assets/images/nature/nature1.jpeg" width="1000" height="300">
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="background double image">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div fxFlex="100" fxFlex.xs="100">
+						<div class="bg-image">
+							<h2>Responsive Images</h2>
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

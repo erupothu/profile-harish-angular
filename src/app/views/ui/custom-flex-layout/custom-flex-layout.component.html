@@ -1,0 +1,250 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayout.xs="column">
+	<div fxFlex="100" fxFlex.xs="100" fxFlexFill fxFlexFill.xs>
+		<mat-tab-group>
+			<mat-tab label="flex Desktop API">
+				Desktop api
+				<div>
+					<mat-card style="margin: 20px;">
+						<div class="bounds">
+							<div [fxLayout]="selectedFxLayouts" [fxLayoutAlign]="selectedFxLayoutAlign" class="content">
+								<mat-card class="item-1">1. One</mat-card>
+								<mat-card class="item-2">2. Two</mat-card>
+								<mat-card class="item-3">3. Three</mat-card>
+							</div>
+						</div>
+						<div style="height: 80%;">
+							<hr>
+							<h4> Layout </h4>
+							<mat-radio-group [(ngModel)]="selectedFxLayouts">
+								<mat-radio-button *ngFor="let item of fxLayouts" [value]="item">{{item}}
+								</mat-radio-button>
+							</mat-radio-group>
+							<hr>
+							<h4> Main Axis </h4>
+							<mat-radio-group [(ngModel)]="selectedMain_axis_fxFlexAlign" (ngModelChange)="axisChange()">
+								<mat-radio-button *ngFor="let item of main_axis_fxFlexAlign" [value]="item">{{item}}
+								</mat-radio-button>
+							</mat-radio-group>
+							<hr>
+							<h4> Cross Axis </h4>
+							<mat-radio-group [(ngModel)]="selectedCross_axis_fxFlexAlign"
+								(ngModelChange)="axisChange()">
+								<mat-radio-button *ngFor="let item of cross_axis_fxFlexAlign" [value]="item">{{item}}
+								</mat-radio-button>
+							</mat-radio-group>
+							<hr>
+						</div>
+					</mat-card>
+				</div>
+			</mat-tab>
+			<mat-tab label="Side nav">
+				<ng-container style="position: relative;">
+					<mat-toolbar class="example-header"> <a (click)="isExpanded = !isExpanded">
+							<mat-icon>menu</mat-icon>
+						</a> </mat-toolbar>
+					<mat-sidenav-container (backdropClick)="close(backdropClick)">
+						<mat-sidenav #sidenav [mode]="selectedMode" [position]="selectedPosition" [opened]="opened"
+							(keydown.escape)="close(escape)" [fixedInViewport]="fixdeSideNav"
+							[fixedTopGap]="fixedTopGap" [fixedBottomGap]="fixedBottomGap" (opened)="event = 'open!'"
+							(closed)="event= 'close!'" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+							<button mat-button (click)="close(closeButton)">
+								<mat-nav-list>
+									<mat-list-item>
+										<span mat-line *ngIf="isExpanded">close</span>
+										<mat-icon mat-list-icon>close</mat-icon>
+
+									</mat-list-item>
+									<mat-list-item>
+										<mat-icon mat-list-icon>person</mat-icon>
+										<h4 mat-line *ngIf="isExpanded">person</h4>
+									</mat-list-item>
+									<mat-list-item>
+										<mat-icon mat-list-icon>email</mat-icon>
+										<h4 mat-line *ngIf="isExpanded">email</h4>
+									</mat-list-item>
+									<mat-list-item>
+										<mat-icon>todo</mat-icon>
+										<h4 mat-line *ngIf="isExpanded">todo</h4>
+									</mat-list-item>
+									<mat-list-item>
+										<mat-icon>calendar</mat-icon>
+										<h4 mat-line *ngIf="isExpanded">calendar</h4>
+									</mat-list-item>
+								</mat-nav-list>
+
+							</button>
+						</mat-sidenav>
+						<mat-sidenav-content>
+							<div style="margin: 20px;">
+								<div>
+									<button mat-button (click)="sidenav.open()">Open</button>
+									<button mat-button (click)="sidenav.close()">Close</button>
+								</div>
+								<hr>
+								Close Reasons:
+								<div>
+									{{reason}}
+								</div>
+								<hr>
+								Modes
+								<div>
+									<mat-radio-group [(ngModel)]="selectedMode">
+										<mat-radio-button *ngFor="let item of sideNavModes" [value]="item"> {{item}}
+										</mat-radio-button>
+									</mat-radio-group>
+								</div>
+								<hr>
+								Positions
+								<div>
+									<mat-radio-group [(ngModel)]="selectedPosition">
+										<mat-radio-button *ngFor="let item of sideNavPosition" [value]="item"> {{item}}
+										</mat-radio-button>
+									</mat-radio-group>
+								</div>
+								<hr>
+								<mat-checkbox [(ngModel)]="fixdeSideNav"> Fixed {{fixdeSideNav}} </mat-checkbox>
+								<hr>
+								<div>
+									Event: {{event}}
+								</div>
+							</div>
+
+						</mat-sidenav-content>
+					</mat-sidenav-container>
+					<mat-toolbar class="example-footer">Footer</mat-toolbar>
+				</ng-container>
+			</mat-tab>
+			<mat-tab label="direction RTL and LTR">
+				<div>
+					<mat-card style="margin: 20px;">
+						<div [dir]="direction">
+							<div style="height: 300px; width: 300px;">
+								<div>
+									Content 1
+								</div>
+								<div>
+									<mat-card style="width: 100;"> 1. One </mat-card>
+									<mat-card style="width: 100;"> 2. Two </mat-card>
+									<mat-card style="width: 100;"> 3. Three </mat-card>
+								</div>
+								<p>I am (test) </p>
+
+								<div>mytext </div>
+								<div>mytext2</div>
+							</div>
+
+						</div>
+						<div>
+							<button mat-mat-raised-button (click)="direction='rtl'">RTL</button>
+							<button mat-mat-raised-button (click)="direction='ltr'">LtR</button>
+						</div>
+
+						<div>
+							<hr>
+							Directinality Change in input: <br>
+							<input #inp type="text" placeholder="Enter text" (blur)="rightAlign()" (focus)="leftAlign()"
+								style="border: 1px solid blue;">
+						</div>
+					</mat-card>
+				</div>
+
+			</mat-tab>
+			<mat-tab label="Angular Themes">
+				<div class="themes-styles" style="margin: 20px;">
+					<mat-toolbar>
+						<mat-toolbar-row fxLayout fxLayoutGap="5px" color="primary">
+							<span>Top Secret</span>
+							<button mat-raised-button (click)="onSetTheme('native')">
+								Native
+							</button>
+							<button mat-raised-button (click)="onSetTheme('default')">
+								Default
+							</button>
+							<button mat-raised-button (click)="onSetTheme('athena')">
+								Athena
+							</button>
+							<button mat-raised-button (click)="onSetTheme('poseidon')">
+								Poseidon
+							</button>
+							<button mat-raised-button (click)="onSetTheme('hera')">
+								Hera
+							</button>
+							<button mat-raised-button (click)="onSetTheme('zeus')">
+								Zeus
+							</button>
+							<button mat-raised-button (click)="onSetTheme('dark-theme')">
+								Dark theme
+							</button>
+							<button mat-raised-button (click)="onSetTheme('light-theme')">
+								Light theme
+							</button>
+							<button mat-raised-button (click)="onSetTheme('my-theme')">
+								My theme
+							</button>
+							<span class="example-spacer"></span>
+							<mat-icon class="example-icon">favorite</mat-icon>
+							<mat-icon class="example-icon">delete</mat-icon>
+						</mat-toolbar-row>
+					</mat-toolbar>
+					<div>
+						<mat-card>
+							<mat-card-content fxLayout="column">
+								<h3>Raised Buttons</h3>
+								<div fxLayout="row wrap" fxLayoutGap="20px">
+									<button mat-raised-button>Basic</button>
+									<button mat-raised-button color="primary">Primary</button>
+									<button mat-raised-button color="accent">Accent</button>
+									<button mat-raised-button color="warn">Warn</button>
+									<button mat-raised-button disabled>Disabled</button>
+									<button mat-raised-button class="back">Back (custom)</button>
+								</div>
+							</mat-card-content>
+						</mat-card>
+					</div>
+					<div>
+						<mat-card>
+							<mat-card-content>
+								<h2>Basic Buttons</h2>
+								<div fxLayout="row wrap" fxLayoutGap="10px">
+									<button mat-button>Basic</button>
+									<button mat-button color="primary">Primary</button>
+									<button mat-button color="accent">Accent</button>
+									<button mat-button color="warn">Warn</button>
+									<button mat-button disabled>Disabled</button>
+									<a mat-button routerLink=".">Link</a>
+								</div>
+							</mat-card-content>
+						</mat-card>
+					</div>
+					<div>
+						<mat-card class="mat-card-accent">
+							<mat-card-content>
+								<h2>Warning</h2>
+								<p>System is malfunctioning </p>
+								<div fxLayout="row wrap" fxLayoutGap="10px">
+									<button mat-fab>Basic</button>
+									<button mat-fab color="primary">Primary</button>
+									<button mat-fab color="accent">Accent</button>
+									<button mat-fab color="warn">Warn</button>
+								</div>
+							</mat-card-content>
+						</mat-card>
+
+						<mat-card class="mat-card-warn">
+							<mat-card-content>
+								<h2>Error</h2>
+								<p>Connection problem.. try again soon </p>
+								<div fxLayout="row wrap" fxLayoutGap="10px">
+									<button mat-fab>Basic</button>
+									<button mat-fab color="primary">Primary</button>
+									<button mat-fab color="accent">Accent</button>
+									<button mat-fab color="warn">Warn</button>
+								</div>
+							</mat-card-content>
+						</mat-card>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

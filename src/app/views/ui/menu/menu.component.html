@@ -1,0 +1,359 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center">
+	<div fxFlex="100" fxFlex.xs="100">
+		<mat-tab-group>
+			<mat-tab label="vertical and Horizonal nav bar">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						<div class="icon-vertical">
+							<a href="#" class="active">
+								<mat-icon>home</mat-icon>
+							</a>
+							<a href="#">
+								<mat-icon>search</mat-icon>
+							</a>
+							<a href="#">
+								<mat-icon>people</mat-icon>
+							</a>
+							<a href="#">
+								<mat-icon>delete</mat-icon>
+							</a>
+						</div>
+
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						<div class="icon-horizonal">
+							<a href="#" class="active">
+								<mat-icon>home</mat-icon>
+							</a>
+							<a href="#">
+								<mat-icon>search</mat-icon>
+							</a>
+							<a href="#">
+								<mat-icon>people</mat-icon>
+							</a>
+							<a href="#">
+								<mat-icon>delete</mat-icon>
+							</a>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						<div (click)="changeIcon()" [ngClass]="barStatus?'change':'unchange'">
+							<div class="bar1"></div>
+							<div class="bar2"></div>
+							<div class="bar2"></div>
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="Fixed Side Bar">
+				<div class="images-card" fxFlex="100" fxHide.xs="true">
+					<div class="side-menu">
+						<mat-list>
+							<mat-list-item id="about">About</mat-list-item>
+							<mat-list-item id="service">service</mat-list-item>
+							<mat-list-item id="clients">clients</mat-list-item>
+						</mat-list>
+					</div>
+					<div class="side-content">
+						<h2>Sidebar</h2>
+						<p>This sidebar is of full height (100%) and always shown.</p>
+						<p>Scroll down the page to see the result.</p>
+						<p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no
+							quo, maluisset
+						</p>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="Hovarable side nav">
+				<div fxFlex="100" fxFlex.xs="100">
+					<div class="hov-side-button">
+						<mat-list>
+							<mat-list-item id="about">About</mat-list-item>
+							<mat-list-item id="service">service</mat-list-item>
+							<mat-list-item id="clients">clients</mat-list-item>
+						</mat-list>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="dropdowns">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						<div class="hover-dropdown-container">
+							<button class="hover-dropdown-button">hover me</button>
+							<div class="hover-drpdn-content">
+								<mat-list>
+									<mat-list-item>Home</mat-list-item>
+									<mat-list-item>Abount</mat-list-item>
+									<mat-list-item>Contact</mat-list-item>
+								</mat-list>
+							</div>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						<div class="click-dropdown-container">
+							<button class="hover-dropdown-button" (click)="drpdnBtnFired()">click me</button>
+							<div [ngClass]="drpDnBtnFire?'click-drpdn-content2':'click-drpdn-content'">
+								<mat-list>
+									<mat-list-item>Home</mat-list-item>
+									<mat-list-item>Abount</mat-list-item>
+									<mat-list-item>Contact</mat-list-item>
+								</mat-list>
+							</div>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="50" fxFlex.xs="100">
+						<div class="mega-menu-toolbar">
+							<a mat-list-item>Home</a>
+							<a mat-list-item>News</a>
+							<div class="maga-menu-btn">
+								<a mat-list-item style="padding: 16px;color: white;">Dropdown</a>
+								<div class="mega-menu-content">
+									<div class="header">
+										<h2>Mega Menu</h2>
+									</div>
+									<div class="row">
+										<div class="column">
+											<h3>Category 1</h3>
+											<a href="#">Link 1</a>
+											<a href="#">Link 2</a>
+											<a href="#">Link 3</a>
+										</div>
+										<div class="column">
+											<h3>Category 2</h3>
+											<a href="#">Link 1</a>
+											<a href="#">Link 2</a>
+											<a href="#">Link 3</a>
+										</div>
+										<div class="column">
+											<h3>Category 3</h3>
+											<a href="#">Link 1</a>
+											<a href="#">Link 2</a>
+											<a href="#">Link 3</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						Select Colors
+						<div>
+							<mat-form-field>
+								<mat-label>select color</mat-label>
+								<mat-select [(ngModel)]="selectedColor">
+									<div>
+										<mat-icon>keyboard_backspace</mat-icon>
+									</div>
+									<div>
+										<input [(ngModel)]="searchColors" placeholder="color"
+											style="border: 1px solid blue;">
+									</div>
+									<mat-option *ngFor="let item of menuWithSelectColor" [value]="item"
+										class="background-color" [style.background-color]="item.name">
+										<div>
+										</div>
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						Select Colors
+						<div>
+							<mat-form-field>
+								<mat-label>select color</mat-label>
+								<mat-select [(ngModel)]="selectedColor" [multiple]="true">
+									<div>
+										<input [(ngModel)]="searchColors" placeholder="color"
+											style="border: 1px solid blue;">
+									</div>
+									<mat-option *ngFor="let item of menuWithSelectColor" [value]="item"
+										class="background-color" [style.background-color]="item.name">
+										<div>
+										</div>
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						Colors Menu
+						<div>
+							<button mat-flat-button [mat-menu-trigger-for]="colors">
+								colors
+							</button>
+							<mat-menu #colors="matMenu">
+								<div *ngFor="let item of menuWithSelectColor" class="background-color"
+									[style.background-color]="item.name">
+									<button mat-button>{{item.name}}</button>
+								</div>
+							</mat-menu>
+						</div>
+					</div>
+					<div class="images-card" fxFlex="30" fxFlex.xs="100">
+						Colors Menu stop propagation
+						<div>
+							<button mat-button [mat-menu-trigger-for]="colors">
+								colors
+							</button>
+							<mat-menu #colors="matMenu">
+								<div *ngFor="let item of menuWithSelectColor" class="background-color"
+									[style.background-color]="item.name">
+									<button mat-menu-item (click)="stopPropagationColor($event)">{{item.name}}</button>
+								</div>
+							</mat-menu>
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="menu-positions">
+				<div class="images-card" fxFlex="100" fxFlex.xs="100">
+					<div class="bottom-side-hbar">
+						<a href="#home">Home</a>
+						<a href="#news">News</a>
+						<a href="#contact">Contact</a>
+						<a href="#about">About</a>
+						<a href="#support">Support</a>
+						<a href="#blog">Blog</a>
+						<a href="#tools">Tools</a>
+						<a href="#base">Base</a>
+						<a href="#custom">Custom</a>
+						<a href="#more">More</a>
+						<a href="#logo">Logo</a>
+						<a href="#friends">Friends</a>
+						<a href="#partners">Partners</a>
+						<a href="#people">People</a>
+						<a href="#work">Work</a>
+					</div>
+					<div class="top-side-hbar">
+						<a href="#home">Home</a>
+						<a href="#news">News</a>
+						<a href="#contact">Contact</a>
+						<a href="#about">About</a>
+						<a href="#support">Support</a>
+						<a href="#blog">Blog</a>
+						<a href="#tools">Tools</a>
+						<a href="#base">Base</a>
+						<a href="#custom">Custom</a>
+						<a href="#more">More</a>
+						<a href="#logo">Logo</a>
+						<a href="#friends">Friends</a>
+						<a href="#partners">Partners</a>
+						<a href="#people">People</a>
+						<a href="#work">Work</a>
+					</div>
+					<div class="left-side-vbar">
+						<a href="#home">Home</a>
+						<a href="#news">News</a>
+						<a href="#contact">Contact</a>
+						<a href="#about">About</a>
+						<a href="#support">Support</a>
+						<a href="#blog">Blog</a>
+						<a href="#tools">Tools</a>
+						<a href="#base">Base</a>
+						<a href="#custom">Custom</a>
+						<a href="#more">More</a>
+						<a href="#logo">Logo</a>
+						<a href="#friends">Friends</a>
+						<a href="#partners">Partners</a>
+						<a href="#people">People</a>
+						<a href="#work">Work</a>
+					</div>
+					<div class="right-side-vbar">
+						<a href="#home">Home</a>
+						<a href="#news">News</a>
+						<a href="#contact">Contact</a>
+						<a href="#about">About</a>
+						<a href="#support">Support</a>
+						<a href="#blog">Blog</a>
+						<a href="#tools">Tools</a>
+						<a href="#base">Base</a>
+						<a href="#custom">Custom</a>
+						<a href="#more">More</a>
+						<a href="#logo">Logo</a>
+						<a href="#friends">Friends</a>
+						<a href="#partners">Partners</a>
+						<a href="#people">People</a>
+						<a href="#work">Work</a>
+					</div>
+				</div>
+			</mat-tab>
+			<mat-tab label="sticky menu">
+				<div class="sticky-menu">
+					<a href="#home">Home</a>
+					<a href="#news">News</a>
+					<a href="#contact">Contact</a>
+				</div>
+
+				<div class="main"  style="padding: 30px;">
+					<h1>Fixed Top Menu</h1>
+					<h2>Scroll this page to see the effect</h2>
+					<h2>The navigation bar will stay at the top of the page while scrolling</h2>
+
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+					<p>Some text some text some text some text..</p>
+				</div>
+			</mat-tab>
+			<mat-tab label="expand and compress on scroll">
+				<div fxLayout="row wrap" fxLayout.xs="column">
+					<div class="images-card" fxFlex="100" fxFlex.xs="100">
+						<div class="scroll-event-container" style="padding: 30px;">
+							<div #scroll id="scrollable" (scroll)="onScroll($event)">
+								<div [ngClass]="scrollTop>50 ? 'compress-bar-on-scroll':'expand-bar-on-scroll'">
+									<a href="#home">Home</a>
+									<a href="#news">News</a>
+									<a href="#contact">Contact</a>
+								</div>
+
+								<div class="main">
+									<h1>Fixed Top Menu</h1>
+									<h2>Scroll this page to see the effect</h2>
+									<h2>The navigation bar will stay at the top of the page while scrolling</h2>
+
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+									<p>Some text some text some text some text..</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

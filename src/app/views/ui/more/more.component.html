@@ -1,0 +1,322 @@
+<button mat-flat-button (click)="direction = 'rtl'">RTL</button>
+    <button mat-flat-button (click)="direction = 'ltr'">LTR</button>
+<div [dir]="direction">
+<mat-tab-group>
+	<mat-tab label="Video Types">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxLFlex="40">
+				<mat-card>
+					<mat-card-header>
+						<mat-card-title>Video from source file</mat-card-title>
+					</mat-card-header>
+					<mat-card-content>
+						<!-- autoplay muted loop -->
+						<video width="800" height="600" controls>
+							<source src="../../../../assets/videos/pre-wedding.mp4" type="video/mp4">
+						</video>
+						<div class="text-on-video">
+							<h4>Heading</h4>
+							<div>
+								<span> This is the text on the video screen</span>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+			<div fxLFlex="40">
+				<mat-card>
+					<mat-card-header>
+						<mat-card-title>Video from youtbe with iframe</mat-card-title>
+					</mat-card-header>
+					<mat-card-content>
+						<div fxLayout="row wrap" fxLayoutAlign="center">
+							<iframe width="800" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</mat-tab>
+	<mat-tab label="custom timeline">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxFlex="100">
+				<mat-card style="height: 150vh;background-color: gray;">
+					<mat-card-content>
+						<div class="timeline">
+							<div [ngClass]="i%2===0?'container right':'container left'"
+								*ngFor="let item of customTimeline; let i=index">
+								<div class="content">
+									<h2> {{item.heading}} </h2>
+									<p>{{item.content}}</p>
+								</div>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</mat-tab>
+	<mat-tab label="scroll progress">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxFlex="80">
+				<mat-card style="height: 150vh;">
+					<mat-card-content>
+						<div class="sticky-progressbar">
+							<div style="text-align: center;">
+								<h1>Scroll Indicator</h1>
+							</div>
+							<div class="example-section">
+								<mat-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="value">
+								</mat-progress-bar>
+								<div style="position: absolute; padding: 10px; color: white;"> {{value}}% </div>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		</div>
+	</mat-tab>
+	<mat-tab label="Overlay effect">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxFlex="80">
+				<mat-card style="height: 150vh;">
+					<div [ngClass]="overlayEffectFlag?'overlay-on':'overlay'"
+						(click)="overlayEffectFlag = !overlayEffectFlag">
+						<div id="text">Overlay Text</div>
+					</div>
+					<div style="padding:20px">
+						<h2>Overlay with Text</h2>
+						<button (click)="overlayEffectFlag = !overlayEffectFlag">Turn on overlay effect</button>
+					</div>
+				</mat-card>
+			</div>
+		</div>
+	</mat-tab>
+	<mat-tab label="Text">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxFlex="40">
+				<mat-card style="height: 70vh;">
+					<mat-card-header>
+						<mat-card-title>responsive text</mat-card-title>
+					</mat-card-header>
+					<h1 style="font-size:5vw;">Responsive Text</h1>
+
+					<p style="font-size:2vw;">Resize the browser window to see how the text size scales.</p>
+
+					<p style="font-size:1vw;">Use the "vw" unit when sizing the text. 10vw will set the size to 10% of
+						the viewport width.</p>
+
+					<p style="font-size: 30px;">Viewport is the browser window size. 1vw = 1% of viewport width. If the
+						viewport is 50cm wide,
+						1vw is 0.5cm.</p>
+				</mat-card>
+			</div>
+			<div fxFlex="40">
+				<mat-card style="height: 50vh;">
+					<mat-card-header>
+						<mat-card-title>Glowing Text</mat-card-title>
+					</mat-card-header>
+					<mat-card-content>
+						<h1 class="glow">GLOWING TEXT</h1>
+					</mat-card-content>
+				</mat-card>
+			</div>
+			
+		</div>
+	</mat-tab>
+	<mat-tab label="sticky element">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxFlex="80">
+				<mat-card style="height: 150vh;">
+
+					<div class="parent">
+						<h2>Sticky Element: Scroll Down to See the Effect</h2>
+						<p>Scroll down this page to see how sticky positioning works.</p>
+						<div class="sticky">I will stick to the screen when you reach my scroll position</div>
+
+						<p>Some example text..</p>
+						<h2>Scroll back up again to "remove" the sticky position.</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum
+							interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas
+							nisl
+							est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet.
+							Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a
+							lacus
+							interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum
+							dignissim
+							ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus
+							gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh
+							tempor
+							porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur
+							adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio,
+							vitae
+							scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor
+							vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed
+							ornare
+							eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+							Nunc
+							sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis
+							imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer
+							fringilla
+							congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris
+							quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+							imperdiet,
+							nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis
+							dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus
+							vestibulum
+							augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent
+							convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed
+							ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis.
+							Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum.
+							Sed
+							dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum
+							dolor
+							sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi
+							lorem
+							egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec
+							congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante
+							ligula,
+							facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut
+							hendrerit
+							risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero
+							sed
+							nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis.
+							Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac
+							leo
+							purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque
+							enim
+							ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.
+							Fusce
+							luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in
+							odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis
+							dictum
+							nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed
+							ornare
+							turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non
+							fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam
+							velit.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et
+							dictum
+							interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas
+							nisl
+							est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet.
+							Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a
+							lacus
+							interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum
+							dignissim
+							ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus
+							gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh
+							tempor
+							porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur
+							adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio,
+							vitae
+							scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor
+							vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed
+							ornare
+							eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+							Nunc
+							sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis
+							imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer
+							fringilla
+							congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris
+							quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+							imperdiet,
+							nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis
+							dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus
+							vestibulum
+							augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent
+							convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed
+							ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis.
+							Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum.
+							Sed
+							dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem ipsum
+							dolor
+							sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi
+							lorem
+							egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec
+							congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante
+							ligula,
+							facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut
+							hendrerit
+							risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero
+							sed
+							nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis.
+							Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac
+							leo
+							purus. Mauris quis diam velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque
+							enim
+							ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.
+							Fusce
+							luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in
+							odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis
+							dictum
+							nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed
+							ornare
+							turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non
+							fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam
+							velit.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et
+							dictum
+							interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas
+							nisl
+							est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet.
+							Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a
+							lacus
+							interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum
+							dignissim
+							ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus
+							gravida venenatis. .</p>
+					</div>
+				</mat-card>
+			</div>
+		</div>
+	</mat-tab>
+	<mat-tab label="Shapes">
+		<div fxLayout="row wrap" fxLayoutAlign="center">
+			<div fxFlex="80">
+				<div>
+					<h2>Triangle Right CSS</h2>
+					<div class="triangle-right"></div>
+				</div>
+				<div>
+					<h2>Triangle Left CSS</h2>
+					<div class="triangle-left"></div>
+				</div>
+				<div>
+					<h2>Trapezoid CSS</h2>
+					<div class="trapezoid "></div>
+				</div>
+				<div>
+
+					<h2>Parallelogram CSS</h2>
+					<div class="parallelogram"></div>
+				</div>
+				<div>
+					<h2>Circle CSS</h2>
+					<div class="circle"></div>
+				</div>
+				<div>
+					<a href="../../../../assets//images//people/female_photo3.jpeg" download>Download
+					</a>
+				</div>
+				<div>
+					<h2>Content Edit</h2>
+					<p contenteditable="true">This is an editable paragraph. Normally I have a border around me on
+						focus, but not today!</p>
+				</div>
+				<div>
+					<h2>Text select color</h2>
+					<p>This is a paragraph.</p>
+					<div>This is some text in a div element.</div>
+
+					<p><strong>Note:</strong> ::selection is not supported in Internet Explorer 8 and earlier versions.
+					</p>
+					<p><strong>Note:</strong> Firefox supports an alternative, the ::-moz-selection property.</p>
+				</div>
+			</div>
+		</div>
+	</mat-tab>
+</mat-tab-group>
+</div>

@@ -1,0 +1,73 @@
+<div fxLayout="row wrap" fxLayout.xs="column">
+  <div fxFlex="100" fxFlex.xs="100">
+    <div class="parent">
+      <div class="header">
+        <div style="font-size: 30px;">My Blog</div>
+        <div style="font-size: 14px;">A Responsive Blog created by me</div>
+      </div>
+      <div class="toolbar" fxLayout.xs="column" fxFlex.xs="100">
+        <a>Home</a>
+        <a>My Contacts</a>
+        <a>Career</a>
+      </div>
+      <div class="left-side" fxShow.gt-xs fxHide.xs>
+        <div class="left-side-view">
+          <div style="display: block;float: left;">
+            <h4>About Me</h4>
+            <div>Photo of me</div>
+            <div style="height: 200px;width: 200px;background-color: gray;color: white;text-align: center;">
+              Photo
+            </div>
+            <div>
+              some text about me, Im harish
+            </div>
+            <h4>More Text</h4>
+            <div *ngFor="let item of [1,2,3,4]"
+              style="height: 20px;width: 200px;background-color: gray;color: white;text-align: center;margin: 20px;">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+         <div>
+            <h5>{{selectedProfile.name}} | {{selectedProfile.email}} | {{selectedProfile.phone}}</h5>
+            <div *ngFor="let item of selectedCategory.tags" style="float: left;">
+              | {{item}} |
+            </div>
+          </div>
+          <button mat-button (click)="editTopic()">edit</button>
+          <br>
+          <hr>
+        <div [innerHtml]="content | safehtml"></div>
+      </div>
+      <div class="right-side" fxShow.gt-xs fxHide.xs>
+        <div style="display: block;background-color: white;margin: 10px;padding: 20px;">
+          <h4>About Me</h4>
+          <div>Photo of me</div>
+          <div style="height: 200px;width: 200px;background-color: gray;color: white;text-align: center;">
+            Photo
+          </div>
+          <div>
+            some text about me, Im harish
+          </div>
+        </div>
+        <div style="display: block;background-color: white;margin: 10px;padding: 20px;">
+          <h4>Popular posts</h4>
+          <div *ngFor="let item of [1,2,3,4]"
+            style="height: 20px;width: 200px;background-color: gray;color: white;text-align: center;margin: 20px;">
+            image
+          </div>
+        </div>
+        <div style="display: block;background-color: white;margin: 10px;padding: 20px;">
+          <h4>Follow me</h4>
+          Some text here
+        </div>
+      </div>
+      <div class="footer">
+        <h2>Footer</h2>
+      </div>
+    </div>
+
+  </div>
+</div>

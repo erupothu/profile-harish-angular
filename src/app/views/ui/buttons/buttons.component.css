@@ -1,0 +1,450 @@
+:host ::ng-deep .mat-tab-group {
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-tab-header {
+  border-bottom: 1 solid green;
+}
+
+:host ::ng-deep .mat-tab-header-pagination {
+  display: none !important;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  flex-direction: column;
+  background-color: gainsboro;
+}
+
+:host ::ng-deep .mat-ink-bar {
+  height: 100%;
+  left: 98% !important;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  flex: 1 1 auto;
+}
+
+.alter-btn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+
+.alter-btn button {
+  border: none;
+  padding: 14px 28px;
+  color: white;
+  font-size: 16px;
+  margin: 2px;
+}
+
+.alter-btn button:hover {
+  opacity: 0.5;
+}
+
+.outlined_btn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+
+.outlined_btn button {
+  border: 2px solid black;
+  padding: 14px 28px;
+  color: white;
+  font-size: 16px;
+  margin: 2px;
+  background-color: white;
+}
+
+.outlined_btn .success {
+  border-color: green;
+  color: green;
+}
+
+.outlined_btn .info {
+  border-color: blue;
+  color: blue;
+}
+
+.outlined_btn .warning {
+  border-color: orange;
+  color: orange;
+}
+
+.outlined_btn .danger {
+  border-color: red;
+  color: red;
+}
+
+.outlined_btn .default {
+  border-color: grey;
+  color: grey;
+}
+
+.outlined_btn .success:hover {
+  color: white;
+  background-color: green;
+}
+
+.outlined_btn .info:hover {
+  color: white;
+  background-color: blue;
+}
+
+.outlined_btn .warning:hover {
+  color: white;
+  background-color: orange;
+}
+
+.outlined_btn .danger:hover {
+  color: white;
+  background-color: red;
+}
+
+.outlined_btn .default:hover {
+  color: white;
+  background-color: grey;
+}
+
+.text-btn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+
+.text-btn button {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.text-btn .success {
+  border-color: green;
+  color: green;
+}
+
+.text-btn .info {
+  border-color: blue;
+  color: blue;
+}
+
+.text-btn .warning {
+  border-color: orange;
+  color: orange;
+}
+
+.text-btn .danger {
+  border-color: red;
+  color: red;
+}
+
+.text-btn .default {
+  border-color: grey;
+  color: grey;
+}
+
+.text-btn button:hover {
+  background: #eee;
+}
+
+.animation-btn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+
+.animation-btn button {
+  border: none;
+  outline: none;
+  padding: 14px 28px;
+  color: white;
+  font-size: 16px;
+  margin: 2px;
+}
+
+.animation-btn .pressed {
+  background-color: green;
+  box-shadow: 0 9px gainsboro;
+  border-radius: 5px;
+  /* radius in all direction of the item */
+}
+
+.animation-btn .pressed:active {
+  box-shadow: 0 5px grey;
+  /* shadow of the item to bottom side with gray background */
+  transform: translateY(4px);
+  /* transfrom the item 4px to Y direction(down) */
+}
+
+.animation-btn .arrow {
+  background-color: orange;
+}
+
+.animation-btn .arrow span {
+  position: relative;
+  transition: 0.5s;
+}
+
+.animation-btn .arrow span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.animation-btn .arrow:hover span {
+  padding-right: 25px;
+}
+
+.animation-btn .arrow:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.animation-btn .ripple {
+  background-color: blue;
+}
+
+.animation-btn .fadein {
+  background-color: red;
+  opacity: 0.6;
+}
+
+.animation-btn .fadein:hover {
+  opacity: 1;
+}
+
+.animation-btn .fadeout {
+  background-color: red;
+  opacity: 1;
+}
+
+.animation-btn .fadeout:hover {
+  opacity: 0.5;
+}
+
+.media-icons {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+
+.media-icons .fa {
+  padding: 30px;
+  font-size: 30px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.media-icons .fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+.fa-android {
+  background: #a4c639;
+  color: white;
+}
+
+.fa-dribbble {
+  background: #ea4c89;
+  color: white;
+}
+
+.fa-vimeo {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-tumblr {
+  background: #2c4762;
+  color: white;
+}
+
+.fa-vine {
+  background: #00b489;
+  color: white;
+}
+
+.fa-foursquare {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-stumbleupon {
+  background: #eb4924;
+  color: white;
+}
+
+.fa-flickr {
+  background: #f40083;
+  color: white;
+}
+
+.fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+.fa-soundcloud {
+  background: #ff5500;
+  color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.fa-rss {
+  background: #ff6600;
+  color: white;
+}
+
+.fa-whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.facebook-tooltip {
+  color: red;
+}
+.round-media-icons {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+.round-media-icons .fa {
+  padding: 30px;
+  font-size: 30px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.more {
+  display: inline;
+}
+
+.less {
+  display: none;
+}
+.icon-btns {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+.icon-btns button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 15px;
+}
+
+
+.hide-on-scroll {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.content-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  margin: 20px;
+  padding: 10px;
+}
+
+.show-on-scroll:hover {
+  background-color: #555;
+}
+
+.show-on-scroll {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}

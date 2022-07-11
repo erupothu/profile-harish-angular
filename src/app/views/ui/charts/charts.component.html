@@ -1,0 +1,19 @@
+<p>charts works!</p>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+	<div fxFlex="100">
+		<mat-tab-group>
+			<mat-tab label="echarts">
+				<mat-form-field>
+					<mat-label>selcte Type</mat-label>
+					<mat-select [(ngModel)]="selectedType" (ngModelChange)="changeChart()">
+						<mat-option *ngFor="let item of types" [value]="item">
+							{{item}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<span>Line Charts</span>
+				<div echarts [options]="chartOption" class="demo-chart"></div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

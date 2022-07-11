@@ -1,0 +1,74 @@
+<div fxLayout="row wrap" fxLayout.xs="column">
+	<div fxFlex="100" fxFlex.xs="100">
+		<div class="parent">
+			<div class="header">
+				<div style="font-size: 30px;">My Website</div>
+				<div style="font-size: 14px;">A Responsive Website created by me</div>
+			</div>
+			<div class="toolbar">
+				<a href="#">Home</a>
+				<a href="#">My Contacts</a>
+				<a href="#">Career</a>
+			</div>
+				<div  class="left-side" fxShow.gt-xs fxHide.xs="true">
+					<div class="left-side-view">
+						<div style="display: block;float: left;">
+							<h4>About Me</h4>
+							<div>Photo of me</div>
+							<div
+								style="height: 200px;width: 200px;background-color: gray;color: white;text-align: center;">
+								Photo
+							</div>
+							<div>
+								some text about me, Im harish
+							</div>
+							<h4>More Text</h4>
+							<div *ngFor="let item of [1,2,3,4]"
+								style="height: 20px;width: 200px;background-color: gray;color: white;text-align: center;margin: 20px;">
+
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="main">
+				<div *ngFor="let item of [1,2,3,4,5,6,7]">
+					<h4>Title Heading</h4>
+					<div>Title description</div>
+					<div style="height: 20vw;width: 50vw;background-color: brown;color: white;text-align: center;">
+						Photo
+					</div>
+					<div>
+						some text about me, Im harish
+					</div>
+				</div>
+			</div>
+			<div class="right-side" fxHide.xs="true">
+				<div style="display: block;background-color: white;margin: 10px;padding: 20px;">
+					<h4>About Me</h4>
+					<div>Photo of me</div>
+					<div style="height: 200px;width: 200px;background-color: gray;color: white;text-align: center;">
+						Photo
+					</div>
+					<div>
+						some text about me, Im harish
+					</div>
+				</div>
+				<div style="display: block;background-color: white;margin: 10px;padding: 20px;">
+					<h4>Popular posts</h4>
+					<div *ngFor="let item of [1,2,3,4]"
+						style="height: 20px;width: 200px;background-color: gray;color: white;text-align: center;margin: 20px;">
+						image
+					</div>
+				</div>
+				<div style="display: block;background-color: white;margin: 10px;padding: 20px;">
+					<h4>Follow me</h4>
+					Some text here
+				</div>
+			</div>
+			<div class="footer">
+				<h2>Footer</h2>
+			</div>
+		</div>
+
+	</div>
+</div>

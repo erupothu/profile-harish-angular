@@ -1,0 +1,65 @@
+.parent {
+  display: block;
+  /* overflow: scroll; */
+  height: 100%;
+  width: 100%;
+  /* background-color: gainsboro; */
+}
+
+.header {
+  text-align: center;
+  padding: 100px;
+  background-color: darkgoldenrod;
+  color: white;
+  font-family: Loto;
+}
+
+.toolbar {
+  overflow: hidden;
+  background-color: gray;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.toolbar a {
+  float: left;
+  color: white;
+  font-size: 16px;
+  padding: 20px;
+  margin: 3px;
+  text-decoration: none;
+  display: block;
+  background-color: gray;
+  cursor: pointer;
+}
+
+.toolbar a:hover {
+  opacity: 0.6;
+}
+
+.main {
+  width: 60%;
+  min-height: 200px;
+  display: block;
+  background-color: white;
+  padding: 10px;
+  margin: 30px;
+  font-family: Loto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* border-radius: 10px; */
+}
+
+.sub-main {
+  /* position: fixed; */
+  /* display: block; */
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  font-family: Loto;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sub-main:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

@@ -1,0 +1,52 @@
+:host ::ng-deep .mat-tab-group {
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-tab-header {
+  border-bottom: none;
+}
+
+:host ::ng-deep .mat-tab-header-pagination {
+  display: none !important;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  flex-direction: column;
+}
+
+:host ::ng-deep .mat-ink-bar {
+  height: 100%;
+  left: 98% !important;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  flex: 1 1 auto;
+}
+
+
+/* Table css */
+
+.mat-table mat-header-cell {
+  border: 1px solid;
+}
+
+.mat-table mat-footer-cell {
+  border: 1px solid;
+}
+
+.resize-table mat-header-cell {
+  cursor: col-resize;
+}
+.resize-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-table mat-cell {
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.drag-drop  mat-header-cell {
+	cursor: all-scroll;
+}

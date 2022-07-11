@@ -1,0 +1,154 @@
+<div fxLayout="row wrap" fxLayout.xs="100" fxLayoutAlign="center">
+	<div fxFlex="80" fxFlex.xs="100">
+		<mat-tab-group>
+			<mat-tab label="normal mat table">
+				<mat-card style="margin: 20px;">
+					<mat-table [dataSource]="dataSourceMat" class="mat-elevation-z8" matSort matSortActive="created"
+						matSortDisableClear matSortDirection="desc">
+						<!-- Position Column -->
+						<ng-container matColumnDef="position">
+							<mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> Total</mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="name">
+							<mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="weight">
+							<mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> {{table1Totals('weight')}} </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="cost">
+							<mat-header-cell *matHeaderCellDef mat-sort-header> Cost </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> {{table1Totals('cost')}} </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="symbol">
+							<mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+						</ng-container>
+
+						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+						<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+						<mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+					</mat-table>
+					<mat-paginator #paginator1 [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 30, 50, 60]">
+					</mat-paginator>
+				</mat-card>
+			</mat-tab>
+			<mat-tab label="drag and drop table">
+				<mat-card style="margin: 20px;">
+					<mat-table [dataSource]="dragAndDropTable" cdkDropList cdkDropListOrientation="horizontal"
+						(cdkDropListDropped)="tableDrop($event)" class="drag-drop">
+						<ng-container matColumnDef="position">
+							<mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x"
+								(cdkDragStarted)="dragStarted('position')"> No. </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> Total</mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="name">
+							<mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x"
+								(cdkDragStarted)="dragStarted('name')"> Name </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="weight">
+							<mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x"
+								(cdkDragStarted)="dragStarted('weight')"> Weight </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> {{table1Totals('weight')}} </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="cost">
+							<mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x"
+								(cdkDragStarted)="dragStarted('cost')"> Cost </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> {{table1Totals('cost')}} </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="symbol">
+							<mat-header-cell *matHeaderCellDef cdkDrag cdkDragLockAxis="x"
+								(cdkDragStarted)="dragStarted('symbol')"> Symbol </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+						</ng-container>
+
+						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+						<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+						<mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+					</mat-table>
+					<mat-paginator #paginator1 [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 30, 50, 60]">
+					</mat-paginator>
+				</mat-card>
+			</mat-tab>
+
+			<mat-tab label="resize table">
+				<mat-card style="margin: 20px;">
+					<mat-table [dataSource]="resizeTable" matSort class="resize-table">
+						<ng-container matColumnDef="position">
+							<mat-header-cell *matHeaderCellDef mat-sort-header mwlResizable [enableGhostResize]="true"
+								(resizeEnd)="onResizeEnd($event, 'position')"
+								[resizeEdges]="{bottom: false, right: true, top: false, left: true}">
+								No. </mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> Total</mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="name">
+							<mat-header-cell *matHeaderCellDef mat-sort-header mwlResizable [enableGhostResize]="true"
+								(resizeEnd)="onResizeEnd($event, 'name')"
+								[resizeEdges]="{bottom: false, right: true, top: false, left: true}"> Name
+							</mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="weight">
+							<mat-header-cell *matHeaderCellDef mat-sort-header mwlResizable [enableGhostResize]="true"
+								(resizeEnd)="onResizeEnd($event, 'weight')"
+								[resizeEdges]="{bottom: false, right: true, top: false, left: true}"> Weight
+							</mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> {{table1Totals('weight')}} </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="cost">
+							<mat-header-cell *matHeaderCellDef mat-sort-header mwlResizable [enableGhostResize]="true"
+								(resizeEnd)="onResizeEnd($event, 'cost')"
+								[resizeEdges]="{bottom: false, right: true, top: false, left: true}"> Cost
+							</mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.cost}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> {{table1Totals('cost')}} </mat-footer-cell>
+						</ng-container>
+
+						<ng-container matColumnDef="symbol">
+							<mat-header-cell *matHeaderCellDef mat-sort-header mwlResizable [enableGhostResize]="true"
+								(resizeEnd)="onResizeEnd($event, 'symbol')"
+								[resizeEdges]="{bottom: false, right: true, top: false, left: true}"> Symbol
+							</mat-header-cell>
+							<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+							<mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+						</ng-container>
+
+						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+						<mat-row *matRowDef="let row; columns: displayedColumns;let index = index;"></mat-row>
+						<mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+					</mat-table>
+					<mat-paginator #paginator1 [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 30, 50, 60]">
+					</mat-paginator>
+				</mat-card>
+			</mat-tab>
+		</mat-tab-group>
+
+	</div>
+</div>

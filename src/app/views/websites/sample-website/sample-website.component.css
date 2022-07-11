@@ -1,0 +1,72 @@
+.parent {
+    display: block;
+	/* overflow: scroll; */
+	height: 100%;
+  width: 100%;
+  background-color: gainsboro;
+}
+.header {
+  text-align: center;
+  padding: 100px;
+  background-color: darkgoldenrod;
+  color: white;
+  font-family: Loto;
+}
+
+.toolbar {
+  overflow: hidden;
+  background-color: gray;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+.toolbar a {
+  float: left;
+  color: white;
+  font-size: 16px;
+  padding: 20px;
+  margin: 3px;
+  text-decoration: none;
+  display: block;
+}
+
+.toolbar a:hover {
+  background-color: gainsboro;
+}
+
+.left-side {
+  float: left;
+  display: block;
+  background-color: white;
+  padding: 20px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 70px;
+  margin: 10px;
+}
+.right-side {
+  float: left;
+  display: block;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 70px;
+}
+
+/* Main column */
+.main {
+	width: 60%;
+  float: left;
+  display: block;
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+}
+.footer {
+	float: left;
+	display: block;
+	width: 100%;
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
